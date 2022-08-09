@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="~/temp/css/reset.css" />
+    <link rel="stylesheet" href="~/temp/css/style.css" />
+    <link rel="stylesheet" href="~/temp/bootstrap-4.6.1-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="~/temp/acssets/fontawesome-free-6.1.1-web/css/all.min.css" />
+    <title>Quản lý nhân viên</title>
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="logo">
+                        <a href="">
+                            <img src="~/temp/acssets/img/logo.svg"
+                                 class="border-0 img-thumbnail"
+                                 alt="" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @* <div class="menu">
+                        <ul class="d-flex mt-4 font-weight-bold">
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">CSKH</a></li>
+                        </ul>
+                        </div>*@
+                </div>
+                <div class="col-md-3 d-flex mt-4 font-weight-bold">
+                    @*<div class="bell">
+                            <a href=""><i class="fa-solid fa-bell"></i></a>
+                            <div class="number-notification">
+                                <span>1</span>
+                            </div>
+                            <div class="show-notifycation">
+                                <p>Message</p>
+                            </div>
+                        </div>*@
+                    <div class="user">
+                        <ul class="d-flex">
+                            <li><a class="nav-link text-info" asp-area="" asp-action="Register" asp-controller="Auth">ĐĂNG KÝ</a></li>
+                            <li><a class="nav-link text-info" asp-area="" asp-action="Index" asp-controller="Auth">ĐĂNG NHẬP</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="warraper">
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="wp-content" class="my-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="carouselExampleControls"
+                             class="carousel slide carousel-fade"
+                             data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleControls"
+                                    class="active"
+                                    data-slide-to="0"></li>
+                                <li data-target="#carouselExampleControls"
+                                    data-slide-to="1"></li>
+                                <li data-target="#carouselExampleControls"
+                                    data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-interval="2000">
+                                    <img class="d-block w-100"
+                                         src="https://cdn.saigonnewport.com.vn/uploads/images/2021/05/19/service-1.jpg"
+                                         alt="First slide" />
+                                </div>
+                                <div class="carousel-item" data-interval="2000">
+                                    <img class="d-block w-100"
+                                         src="https://pic.trangvangvietnam.com/100461/2%20TC-Cat-Lai-(4).jpg"
+                                         alt="Second slide" />
+                                </div>
+                                <div class="carousel-item" data-interval="2000">
+                                    <img class="d-block w-100"
+                                         src="https://cdn.saigonnewport.com.vn/uploads/images/2021/11/08/lai-dat-gian-khoan-61893c7a22081.png"
+                                         alt="Third slide" />
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev"
+                               href="#carouselExampleControls"
+                               role="button"
+                               data-slide="prev">
+                                <span class="carousel-control-prev-icon"
+                                      aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next"
+                               href="#carouselExampleControls"
+                               role="button"
+                               data-slide="next">
+                                <span class="carousel-control-next-icon"
+                                      aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                @RenderBody()
+            </div>
+
+            @* <div class="container">
+                <main role="main" class="pb-3">
+                @RenderBody()
+                </main>
+                </div>*@
+
+        </div>
+
+        <div id="footer">
+            <div class="container">
+                <div class="row bg-primary">
+                    <div class="col-md-6">
+                        <div class="address">
+                            <h4>Địa chỉ</h4>
+                            <p>1295B Nguyễn Thị Định, Phường Cát Lái, Quận 2, TP Hồ Chí Minh</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0">
+                        <div class="gg-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.663785571279!2d106.78563001488494!3d10.760374092332402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175244720a82d63%3A0x41d533c1b8a876d0!2zMTI5NUIgTmd1eeG7hW4gVGjhu4sgxJDhu4tuaCwgQ8OhdCBMw6FpLCBRdeG6rW4gMiwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1650879327814!5m2!1svi!2s" width="450" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="jquery/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

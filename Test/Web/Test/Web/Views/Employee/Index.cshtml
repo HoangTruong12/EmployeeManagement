@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Web.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-info fa fa-pencil" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info fa fa-pencil" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info fa fa-pencil" }) |
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-info fa fa-pencil" })*@
+
+                    <a onclick="Delete(@item.Id)" class="btn btn-info fa fa-pencil"><i class="fa fa-trash"></i>Delete</a>
+
+                    @*@using (Html.BeginForm("Delete", "Employee", new { id = item.Id }, FormMethod.Post, false, new { onsubmit = "return comfirm('Are you sure you want to delete this?');" }))
+                        {
+                            @Html.AntiForgeryToken();
+                            <input type = "submit" value = "Delete" />
+                        }*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage)
+        });
+
+        function Delete(id) {
+            alertify.confirm('Web API CRUD Operations', 'Are you sure want to DELETE this item ?', function () {
+                window.location.href = '@Url.Action("Delete", "Employee")' + "/" + id;
+            }, null);
+        }
+    </script>
+}

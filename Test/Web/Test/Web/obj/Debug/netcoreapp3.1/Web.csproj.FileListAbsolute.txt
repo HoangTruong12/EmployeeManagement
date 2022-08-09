@@ -1,0 +1,216 @@
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.exe
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.deps.json
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.runtimeconfig.json
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.runtimeconfig.dev.json
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.pdb
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.Views.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.Views.pdb
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.csproj.AssemblyReference.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfoInputs.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfo.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorAssemblyInfo.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorAssemblyInfo.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\staticwebassets\Web.StaticWebAssets.Manifest.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.TagHelpers.input.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.TagHelpers.output.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorCoreGenerate.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorTargetAssemblyInfo.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorTargetAssemblyInfo.cs
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.Views.pdb
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.pdb
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
+D:\Trainning\EmpManagement\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.csproj.CopyComplete
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Abstractions.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Trainning\EmpManagement\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\appsettings.json
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.exe
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.deps.json
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.runtimeconfig.json
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.runtimeconfig.dev.json
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.pdb
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.Views.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.Views.pdb
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Abstractions.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.csproj.AssemblyReference.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfoInputs.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfo.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorAssemblyInfo.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorAssemblyInfo.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\staticwebassets\Web.StaticWebAssets.Manifest.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\staticwebassets\Web.StaticWebAssets.xml
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\scopedcss\bundle\Web.styles.css
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.TagHelpers.input.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.TagHelpers.output.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorCoreGenerate.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorTargetAssemblyInfo.cache
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorTargetAssemblyInfo.cs
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.Views.pdb
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.csproj.CopyComplete
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.dll
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.pdb
+D:\ShareProjectTrain\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\appsettings.json
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.exe
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.deps.json
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.runtimeconfig.json
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.runtimeconfig.dev.json
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.pdb
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.Views.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Web.Views.pdb
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Abstractions.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.GeneratedMSBuildEditorConfig.editorconfig
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfoInputs.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfo.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorAssemblyInfo.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorAssemblyInfo.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\staticwebassets\Web.StaticWebAssets.Manifest.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\staticwebassets\Web.StaticWebAssets.xml
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\scopedcss\bundle\Web.styles.css
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.TagHelpers.input.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.TagHelpers.output.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorCoreGenerate.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorTargetAssemblyInfo.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.RazorTargetAssemblyInfo.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.Views.pdb
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.csproj.CopyComplete
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.pdb
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\dotnet-aspnet-codegenerator-design.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Details.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Create.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Edit.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Auth\Index.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_IndexLayout.cshtml.g.cs
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Web.csproj.AssemblyReference.cache
+E:\Workspace-E\Source code\Test\Web\Test\Web\obj\Debug\netcoreapp3.1\Razor\Views\Auth\Register.cshtml.g.cs

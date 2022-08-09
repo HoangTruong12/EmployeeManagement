@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "kh7ZDBtyjGd2C+Jy/GRbroM/Q7EDfgBkYUOd2iyQhIWu/8DysJ2gs3dLCFjgsSsnR/wXC8kJz3Z5Ke4eMycFsg==",
+  "success": true,
+  "projectFilePath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\truonghv2\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
