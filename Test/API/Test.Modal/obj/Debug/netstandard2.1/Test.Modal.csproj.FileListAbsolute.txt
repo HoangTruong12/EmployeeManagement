@@ -8,3 +8,13 @@ E:\Workspace-E\Source code\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Mod
 E:\Workspace-E\Source code\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.dll
 E:\Workspace-E\Source code\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.pdb
 E:\Workspace-E\Source code\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.csproj.AssemblyReference.cache
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\bin\Debug\netstandard2.1\Test.Modal.deps.json
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\bin\Debug\netstandard2.1\Test.Modal.dll
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\bin\Debug\netstandard2.1\Test.Modal.pdb
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.csproj.AssemblyReference.cache
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.GeneratedMSBuildEditorConfig.editorconfig
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.AssemblyInfoInputs.cache
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.AssemblyInfo.cs
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.csproj.CoreCompileInputs.cache
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.dll
+E:\Workspace-E\Source code\EmployeeManagementProject\Test\API\Test.Modal\obj\Debug\netstandard2.1\Test.Modal.pdb

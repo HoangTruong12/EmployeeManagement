@@ -16,6 +16,7 @@ namespace Test.Data.Repository
         Task<TEntity> Get(int id, List<string> includeProperty = null);
 
         Task<TEntity> Add(TEntity entity);
+        Task<TEntity> AddRange(TEntity entity);
 
         Task<TEntity> Update(TEntity entity);
 

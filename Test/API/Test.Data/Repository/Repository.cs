@@ -26,6 +26,13 @@ namespace Test.Data.Repository
             _ = await _context.SaveChangesAsync();
             return await Task.FromResult(entity);
         }
+        public async Task<TEntity> AddRange(TEntity entity)
+        {
+            _context.Set<TEntity>().AddRange(entity);
+            _ = await _context.SaveChangesAsync();
+            return await Task.FromResult(entity);
+        }
+
 
         public async Task<TEntity> Delete(int id)
         {

@@ -18,6 +18,7 @@ namespace Test.Services
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IRegisterService, RegisterService>();
+            services.AddScoped<IExcelService, ExcelService>();
             return services;
         }
     }

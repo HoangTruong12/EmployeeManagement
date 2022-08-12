@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\Test.Data.csproj": {}
+    "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\Test.Data.csproj": {}
   },
   "projects": {
-    "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\Test.Data.csproj": {
+    "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\Test.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\Test.Data.csproj",
+        "projectUniqueName": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\Test.Data.csproj",
         "projectName": "Test.Data",
-        "projectPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\Test.Data.csproj",
+        "projectPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\Test.Data.csproj",
         "packagesPath": "C:\\Users\\truonghv2\\.nuget\\packages\\",
-        "outputPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\obj\\",
+        "outputPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truonghv2\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -30,8 +30,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj": {
-                "projectPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj"
+              "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj": {
+                "projectPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj"
               }
             }
           }
@@ -74,14 +74,14 @@
         }
       }
     },
-    "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj": {
+    "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj",
+        "projectUniqueName": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj",
         "projectName": "Test.Modal",
-        "projectPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj",
+        "projectPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj",
         "packagesPath": "C:\\Users\\truonghv2\\.nuget\\packages\\",
-        "outputPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\obj\\",
+        "outputPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truonghv2\\AppData\\Roaming\\NuGet\\NuGet.Config",

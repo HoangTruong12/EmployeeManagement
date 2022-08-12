@@ -89,7 +89,6 @@ namespace Web.Controllers
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-                    TempData["SuccessMessage"] = "Register Successfully";
 
                     var url = _configuration["ApiUrl"] + "api/Auth/register";
 
@@ -110,12 +109,21 @@ namespace Web.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Index");
+                        //TempData["SuccessMessage"] = "Register Successfully";
+                        return RedirectToAction(nameof(Index));
                     }
                 }
             }
 
             return View(employee);
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return Redirect("~/Auth/Index");
+        }
+
+
     }
 }

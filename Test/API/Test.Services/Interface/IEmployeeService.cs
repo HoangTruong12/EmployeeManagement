@@ -6,7 +6,8 @@ namespace Test.Services.Interface
 {
     public interface IEmployeeService
     {
-        List<Employee> GetAllEmployee();
+        //List<Employee> GetAllEmployee(string name);
+        Task<IEnumerable<Employee>> GetAllEmployee(string id, string name);
         Task<Employee> GetEmployee(int id);
         Task<bool> Create(Employee employee);
         Task<bool> Update(int id, Employee employee);

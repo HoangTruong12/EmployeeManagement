@@ -18,20 +18,33 @@ namespace Test.Services.Implement
             _empRepo = empRepo;
         }
 
-        public List<Employee> GetAllEmployee()
-        {
-            var listEmployees = _empRepo.GetAll();
+        //public async Task<Employee> GetAllEmployee()
+        //{
+        //    var listEmployees = _empRepo.GetAll();
 
-            return listEmployees.Select(x => new Employee
+        //    return result = listEmployees.Select(x => new Employee
+        //    {
+        //        Id = x.Id,
+        //        Username = x.Username,
+        //        Password = x.Password,
+        //        Name = x.Name,
+        //        Birthday = x.Birthday,
+        //        Email = x.Email,
+        //        PhoneNumber = x.PhoneNumber
+        //    }).ToList();
+
+        //}
+
+        public async Task<IEnumerable<Employee>> GetAllEmployee(string id, string name)
+        {
+            var search = _empRepo.GetAll();
+
+            if (!string.IsNullOrEmpty(id) || !string.IsNullOrEmpty(name))
             {
-                Id = x.Id,
-                Username = x.Username,
-                Password = x.Password,
-                Name = x.Name,
-                Birthday = x.Birthday,
-                Email = x.Email,
-                PhoneNumber = x.PhoneNumber
-            }).ToList();
+                search = search.Where(x => (x.Id.ToString() == id || id == null) && (x.Name.Contains(name) || name == null));
+            }
+
+            return search.ToList();
         }
 
         public async Task<Employee> GetEmployee(int id)
@@ -61,7 +74,7 @@ namespace Test.Services.Implement
                 UnitOfWork.Commit();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 UnitOfWork.Rollback();
                 throw new Exception(ex.Message);
@@ -113,7 +126,6 @@ namespace Test.Services.Implement
             }
         }
 
-      
         public bool CheckExistsEmailEmployee(string email)
         {
             try

@@ -21,5 +21,9 @@
     <ProjectReference Include="..\Test.Services\Test.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Upload\files\" />
+  </ItemGroup>
+
 
 </Project>

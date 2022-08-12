@@ -15,13 +15,14 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class EmployeeController : BaseController
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger<EmployeeController> _logger;
 
-        public EmployeeController(ILogger<EmployeeController> logger, IConfiguration configuration, IHttpContextAccessor httpContextAccessor) : base(configuration)
+        public EmployeeController(ILogger<EmployeeController> logger, IConfiguration configuration, 
+            IHttpContextAccessor httpContextAccessor) : base(configuration)
         {
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
@@ -31,19 +32,40 @@ namespace Web.Controllers
 
         // GET: EmployeeController
         //[ValidateAntiForgeryToken]
-        public async Task<ActionResult> Index()
+
+        //public async Task<IActionResult> Index()
+        //{
+        //    client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+        //    client.DefaultRequestHeaders.Authorization =
+        //          new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+        //    string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee");
+        //    var res = JsonConvert.DeserializeObject<List<Employee>>(jsonStr).ToList();
+
+        //    return View(res);
+        //}
+
+        [HttpGet]
+        public async Task<IActionResult> Index(string id, string name)
         {
+            ViewData["GetId"] = id;
+            ViewData["GetName"] = name;
+ 
             client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-            client.DefaultRequestHeaders.Authorization =
-                  new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-            string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee");
+
+            //client.DefaultRequestHeaders.Authorization =
+            //      new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+            //string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?name=" + name);
+            string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?id=" + id + "&name=" + name);
             var res = JsonConvert.DeserializeObject<List<Employee>>(jsonStr).ToList();
 
             return View(res);
         }
 
         // GET: EmployeeController/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -68,7 +90,7 @@ namespace Web.Controllers
         }
 
         // GET: EmployeeController/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -76,17 +98,16 @@ namespace Web.Controllers
         // POST: EmployeeController/Create
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Employee employee)
+        public async Task<IActionResult> Create(Employee employee)
         {
             if (ModelState.IsValid)
             {
                 client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-                TempData["SuccessMessage"] = "Created Successfully";
-
+                
                 client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
-                var url = _configuration["ApiUrl"] + "api/Employee/";
+                var url = _configuration["ApiUrl"] + "api/Employee/create";
 
                 var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
 
@@ -105,6 +126,7 @@ namespace Web.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
+                    TempData["SuccessMessage"] = "Created Successfully";
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -113,7 +135,7 @@ namespace Web.Controllers
         }
 
         // GET: EmployeeController/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -139,7 +161,7 @@ namespace Web.Controllers
         // POST: EmployeeController/Edit/5
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int? id, Employee employee)
+        public async Task<IActionResult> Edit(int? id, Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -150,18 +172,18 @@ namespace Web.Controllers
 
 
                 client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-                TempData["SuccessMessage"] = "Updated Successfully";
-
+                
                 client.DefaultRequestHeaders.Authorization =
                       new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
-                var url = "api/Employee/" + id;
+                var url = "api/Employee/update/" + id;
                 var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PutAsync(url, stringContent);
 
                 if (response.IsSuccessStatusCode)
                 {
+                    TempData["SuccessMessage"] = "Updated Successfully";
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -170,23 +192,22 @@ namespace Web.Controllers
 
         }
 
-        // POST: EmployeeController/Delete/5
         //[HttpPost]
         // [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public ActionResult Delete(int id)
         {
             client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-            TempData["SuccessMessage"] = "Deleted Successfully";
-
+            
             client.DefaultRequestHeaders.Authorization =
                   new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
-            var deleteTask = client.DeleteAsync(_configuration["ApiUrl"] + "api/Employee/delete/" + id);
+            var deleteTask = client.DeleteAsync(_configuration["ApiUrl"] + "api/Employee/delete/" + id.ToString());
 
             var result = deleteTask.Result;
 
             if (result.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Deleted Successfully";
                 return RedirectToAction("Index");
             }
 

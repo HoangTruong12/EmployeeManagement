@@ -7,30 +7,44 @@
         width: 90%;
         height: auto;
     }
-
-.menu ul li a {
+.menu ul li {
     margin: 0 10px;
+}
+
+.menu a {
+    margin: 0 -20px;
+    font-size:20px;
 }
 
 .bell {
     position: relative;
     margin-right: 10px;
-    font-size: 19px;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+    width: 60%;
 }
-
-.user ul li a {
+.center-div {
+    margin: auto;
+    width: 60%;
+}
+.user ul li {
     margin: 0 5px;
+}
+.user a {
+    margin: 0 5px;
+    font-size:16px;
 }
 
 .number-notification span {
     position: absolute;
-    background-color: red;
-    padding: 2px;
+    background-color: #ff1e00;
+    padding: 3px;
     border-radius: 100%;
     border: 1px solid #fff;
-    font-size: 7px;
-    top: -1px;
-    left: 10px;
+    font-size: 8px;
+    top: -5px;
+    color: white;
 }
 
 img.d-block.w-100 {
@@ -58,13 +72,13 @@ input.mb-1.form-control {
     position: relative;
 }
 
-.show-notifycation {
+.show-notification {
     position: absolute;
     background: #fff;
     width: 400px;
     min-height: 100px;
     top: 36px;
-    right: -18px;
+    right: 10px;
     border: 1px solid #007bff;
     border-radius: 10px;
     animation: show ease-in-out 0.5s;
@@ -72,7 +86,7 @@ input.mb-1.form-control {
     display: none;
 }
 
-    .show-notifycation::before {
+    .show-notification::before {
         position: absolute;
         content: "";
         border: 10px solid #e1ba39;
@@ -81,7 +95,7 @@ input.mb-1.form-control {
         right: 14px;
     }
 
-.bell:hover .show-notifycation {
+.bell:hover .show-notification {
     display: block;
 }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Test.Modal.Entities;
@@ -7,7 +8,7 @@ using Test.Services.Interface;
 
 namespace Test.WebAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class EmployeeController : BaseController
     {
         private readonly IEmployeeService _empService;
@@ -17,9 +18,9 @@ namespace Test.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetEmployees()
+        public async Task<IActionResult> GetEmployees(string id, string name)
         {
-            var employees = _empService.GetAllEmployee();
+            var employees = await _empService.GetAllEmployee(id, name);
 
             return Ok(employees);
         }
@@ -34,7 +35,7 @@ namespace Test.WebAPI.Controllers
             return Ok(item);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<IActionResult> Create(Employee employee)
         {
             try
@@ -70,7 +71,7 @@ namespace Test.WebAPI.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public async Task<IActionResult> Update(int id, Employee employee)
         {
             var item = await _empService.GetEmployee(id);
@@ -97,6 +98,25 @@ namespace Test.WebAPI.Controllers
 
             return Ok($"Deleted employee with Id: {id} success");
         }
+
+        //[HttpGet("{search}")]
+        //public async Task<ActionResult<Employee>> Search(string name)
+        //{
+        //    try
+        //    {
+        //        var result = await _empService.Search(name);
+        //        if (result.Any())
+        //        {
+        //            return Ok(result);
+        //        }
+
+        //        return NotFound();
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
 
     }
 }

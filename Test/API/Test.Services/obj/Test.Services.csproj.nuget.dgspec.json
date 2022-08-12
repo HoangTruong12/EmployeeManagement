@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Workspace-E\\Source code\\Test\\API\\Test.Services\\Test.Services.csproj": {}
+    "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Services\\Test.Services.csproj": {}
   },
   "projects": {
-    "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\Test.Data.csproj": {
+    "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\Test.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\Test.Data.csproj",
+        "projectUniqueName": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\Test.Data.csproj",
         "projectName": "Test.Data",
-        "projectPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\Test.Data.csproj",
+        "projectPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\Test.Data.csproj",
         "packagesPath": "C:\\Users\\truonghv2\\.nuget\\packages\\",
-        "outputPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\obj\\",
+        "outputPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truonghv2\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -30,8 +30,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj": {
-                "projectPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj"
+              "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj": {
+                "projectPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj"
               }
             }
           }
@@ -74,14 +74,14 @@
         }
       }
     },
-    "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj": {
+    "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj",
+        "projectUniqueName": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj",
         "projectName": "Test.Modal",
-        "projectPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\Test.Modal.csproj",
+        "projectPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\Test.Modal.csproj",
         "packagesPath": "C:\\Users\\truonghv2\\.nuget\\packages\\",
-        "outputPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Modal\\obj\\",
+        "outputPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Modal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truonghv2\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -136,14 +136,14 @@
         }
       }
     },
-    "E:\\Workspace-E\\Source code\\Test\\API\\Test.Services\\Test.Services.csproj": {
+    "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Services\\Test.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Services\\Test.Services.csproj",
+        "projectUniqueName": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Services\\Test.Services.csproj",
         "projectName": "Test.Services",
-        "projectPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Services\\Test.Services.csproj",
+        "projectPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Services\\Test.Services.csproj",
         "packagesPath": "C:\\Users\\truonghv2\\.nuget\\packages\\",
-        "outputPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Services\\obj\\",
+        "outputPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\truonghv2\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -162,8 +162,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\Test.Data.csproj": {
-                "projectPath": "E:\\Workspace-E\\Source code\\Test\\API\\Test.Data\\Test.Data.csproj"
+              "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\Test.Data.csproj": {
+                "projectPath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Test\\API\\Test.Data\\Test.Data.csproj"
               }
             }
           }
@@ -178,9 +178,37 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.13.0, )"
+            },
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"
+            },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.96.0, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.0.6, )"
+            },
+            "ExcelDataReader": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "ExcelDataReader.DataSet": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
