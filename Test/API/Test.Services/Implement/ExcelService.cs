@@ -1,4 +1,5 @@
-﻿using ExcelDataReader;
+﻿using ClosedXML.Excel;
+using ExcelDataReader;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using OfficeOpenXml;
@@ -81,6 +82,12 @@ namespace Test.Services.Implement
                     worksheet.Cells["F1"].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
                     worksheet.Cells["F1"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
+                    worksheet.Cells["G1"].Value = "DepartmentId";
+                    worksheet.Cells["G1"].Style.Font.Bold = true;
+                    worksheet.Cells["G1"].Style.Font.Size = 16;
+                    worksheet.Cells["G1"].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                    worksheet.Cells["G1"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
                     pck.Save();
                     fileContents = pck.GetAsByteArray();
                 }
@@ -88,59 +95,65 @@ namespace Test.Services.Implement
             }
         }
 
-        public async Task<bool> Upload(IFormFile file)
+        public async Task<bool> Import(IFormFile file)
         {
-
             bool isSaveSuccess = false;
-            string fileName;
-
             try
             {
-                DataTable dt = new DataTable();
                 var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
-                fileName = DateTime.Now.Ticks + extension; //Create a new Name for the file due to security reasons.
-
-                var pathBuilt = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\files");
-
-                if (!Directory.Exists(pathBuilt))
+                var fileName = DateTime.Now.Ticks + extension; //Create a new Name for the file due to security reasons.
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\files", fileName);
+                using (FileStream fs = File.Create(filePath))
                 {
-                    Directory.CreateDirectory(pathBuilt);
+                    file.CopyTo(fs);
                 }
-
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\files", fileName);
-
-                using (var stream = new FileStream(path, FileMode.Create))
+                int rowNo = 1;
+                XLWorkbook workbook = XLWorkbook.OpenFromTemplate(filePath);
+                var sheets = workbook.Worksheets.First();
+                var rows = sheets.Rows().ToList();
+                foreach(var row in rows)
                 {
-                    var employee = new Employee
+                    if (rowNo != 1)
                     {
-                        Username = file.ContentType,
-                        Password = file.ContentType
-                    };
+                        var username = row.Cell(1).Value.ToString();
+                        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrEmpty(username))
+                        {
+                            break;
+                        }
 
-                    await file.CopyToAsync(stream);
-                    //dt = ConvertFileToDataTable(stream);
+                        var passBcrypt = BCrypt.Net.BCrypt.HashPassword(row.Cell(2).Value.ToString());
 
-                    UnitOfWork.BeginTransaction();
+                        Employee employee;
+                        employee = _empRepo.GetAll().Where(x => x.Username == row.Cell(1).Value.ToString()).FirstOrDefault();
+                        if (employee == null)
+                        {
+                            employee = new Employee();
+                        }
+                        employee.Username = row.Cell(1).Value.ToString();
+                        employee.Password = passBcrypt;
+                        employee.Name = row.Cell(3).Value.ToString();
+                        employee.Birthday = row.Cell(4).Value.ToString();
+                        employee.Email = row.Cell(5).Value.ToString();
+                        employee.PhoneNumber = row.Cell(6).Value.ToString();
+                        employee.DepartmentId = int.Parse(row.Cell(7).Value.ToString());
 
-                   // _empRepo.AddRange();
-                    await _empRepo.Add(employee);
-                    UnitOfWork.Commit();
+                        UnitOfWork.BeginTransaction();
+                        await _empRepo.Add(employee);
+                        UnitOfWork.Commit();
+                    }
+                    else
+                    {
+                        rowNo = 2; 
+                    }
                 }
                 isSaveSuccess = true;
-
+                return isSaveSuccess;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
-
-            return isSaveSuccess;
         }
-
-        //public DataTable ConvertFileToDataTable(MemoryStream stream)
-        //{
-        //    return Encoding.UTF8.(stream.ToArray());
-        //}
 
         public bool CheckIfExcelFile(IFormFile file)
         {

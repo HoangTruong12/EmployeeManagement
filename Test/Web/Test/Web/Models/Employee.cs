@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Test.Modal.Entities;
 
 namespace Web.Models
 {
@@ -42,5 +43,10 @@ namespace Web.Models
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
+
+        //public IList<Department> Departments { get; set; }
+
+        public int DepartmentId { get; set; }
+        //public virtual Department Department { get; set; }
     }
 }

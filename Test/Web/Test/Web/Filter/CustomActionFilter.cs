@@ -10,7 +10,7 @@ namespace Web.Filter
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var token = filterContext.HttpContext.Request.Cookies["AccessToken"];
+            var token = filterContext.HttpContext.Request.Cookies["Authorization"];
 
             if (token != null)
                 filterContext.HttpContext.Request.Headers.Add("Authorization", $"Bearer {token}");

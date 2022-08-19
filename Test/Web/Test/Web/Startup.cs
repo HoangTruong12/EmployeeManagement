@@ -40,6 +40,9 @@ namespace Web
                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                };
            });
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
             //services.AddScoped<CustomActionFilter>();
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
@@ -65,7 +68,6 @@ namespace Web
                 if(context.Session != null)
                 {
                     var token = context.Session.GetString("AccessToken");
-                    var a = context.Request.Headers["Authorization"];
                     if (!string.IsNullOrEmpty(token))
                     {
                         context.Request.Headers.Add("Authorization", token);

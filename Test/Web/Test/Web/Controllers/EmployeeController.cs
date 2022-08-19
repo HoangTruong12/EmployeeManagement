@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Web.Filter;
 using Web.Models;
 
 namespace Web.Controllers
@@ -47,9 +48,9 @@ namespace Web.Controllers
         //}
 
         [HttpGet]
-        public async Task<IActionResult> Index(string id, string name)
+        public async Task<IActionResult> Index(string employeeId, string name)
         {
-            ViewData["GetId"] = id;
+            ViewData["GetId"] = employeeId;
             ViewData["GetName"] = name;
  
             client.BaseAddress = new Uri(_configuration["ApiUrl"]);
@@ -57,9 +58,9 @@ namespace Web.Controllers
             //client.DefaultRequestHeaders.Authorization =
             //      new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
-            //string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?name=" + name);
-            string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?id=" + id + "&name=" + name);
-            var res = JsonConvert.DeserializeObject<List<Employee>>(jsonStr).ToList();
+            string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?employeeId=" + employeeId + "&name=" + name);
+            var res = JsonConvert.DeserializeObject<List<ResponseViewModel>>(jsonStr).ToList();
+           
 
             return View(res);
         }
@@ -67,26 +68,34 @@ namespace Web.Controllers
         // GET: EmployeeController/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee/getId/" + id);
+
+                var res = JsonConvert.DeserializeObject<ResponseViewModel>(jsonStr);
+
+                if (res == null)
+                {
+                    return NotFound();
+                }
+
+                return View(res);
             }
-
-            client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-            client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-
-            string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee/getId/" + id);
-
-            var res = JsonConvert.DeserializeObject<Employee>(jsonStr);
-
-            if (res == null)
+            catch(Exception ex)
             {
-                return NotFound();
+                throw ex;
             }
-
-            return View(res);
+          
         }
 
         // GET: EmployeeController/Create
@@ -97,7 +106,6 @@ namespace Web.Controllers
 
         // POST: EmployeeController/Create
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Employee employee)
         {
             if (ModelState.IsValid)
@@ -160,7 +168,6 @@ namespace Web.Controllers
 
         // POST: EmployeeController/Edit/5
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int? id, Employee employee)
         {
             if (ModelState.IsValid)
@@ -172,7 +179,7 @@ namespace Web.Controllers
 
 
                 client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-                
+
                 client.DefaultRequestHeaders.Authorization =
                       new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
@@ -192,12 +199,11 @@ namespace Web.Controllers
 
         }
 
-        //[HttpPost]
-        // [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        [HttpPost]
+        public ActionResult Delete(string id)
         {
             client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-            
+
             client.DefaultRequestHeaders.Authorization =
                   new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
@@ -208,10 +214,9 @@ namespace Web.Controllers
             if (result.IsSuccessStatusCode)
             {
                 TempData["SuccessMessage"] = "Deleted Successfully";
-                return RedirectToAction("Index");
+                return Json(new { msg= "Deleted Successfully", type= "Success" });
             }
-
-            return RedirectToAction("Index");
+            return Json(new { msg = "Deleted Failed", type = "Failed" });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

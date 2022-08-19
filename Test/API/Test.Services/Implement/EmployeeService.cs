@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Test.Data.Repository;
 using Test.Data.UnitOfWork;
+using Test.Modal.Dto;
 using Test.Modal.Entities;
 using Test.Services.Interface;
 
@@ -12,10 +14,12 @@ namespace Test.Services.Implement
     public class EmployeeService : BaseService, IEmployeeService
     {
         private readonly IRepository<Employee> _empRepo;
+        private readonly IRepository<Department> _depRepo;
 
-        public EmployeeService(IUnitOfWork unitOfWork, IRepository<Employee> empRepo) : base(unitOfWork)
+        public EmployeeService(IUnitOfWork unitOfWork, IRepository<Employee> empRepo, IRepository<Department> depRepo) : base(unitOfWork)
         {
             _empRepo = empRepo;
+            _depRepo = depRepo;
         }
 
         //public async Task<Employee> GetAllEmployee()
@@ -35,21 +39,75 @@ namespace Test.Services.Implement
 
         //}
 
-        public async Task<IEnumerable<Employee>> GetAllEmployee(string id, string name)
+        public async Task<IEnumerable<ResponseViewModel>> GetAllEmployee(string employeeId, string name)
         {
-            var search = _empRepo.GetAll();
-
-            if (!string.IsNullOrEmpty(id) || !string.IsNullOrEmpty(name))
+            try
             {
-                search = search.Where(x => (x.Id.ToString() == id || id == null) && (x.Name.Contains(name) || name == null));
-            }
+                var employees = _empRepo.GetAll().ToList();
+                var departments = _depRepo.GetAll().ToList();
 
-            return search.ToList();
+                var query = (from e in employees // outer sequence
+                             join d in departments //inner sequence 
+                             on e.DepartmentId equals d.Id // key selector 
+                             select new ResponseViewModel
+                             { // result selector 
+                                 Id = e.Id,
+                                 Username = e.Username,
+                                 Password = e.Password,
+                                 Name = e.Name,
+                                 Birthday = e.Birthday,
+                                 Email = e.Email,
+                                 PhoneNumber = e.PhoneNumber,
+                                 DepartmentId = d.Id,
+                                 DepartmentName = d.DepartmentName
+                             }).ToList();
+
+                if (!string.IsNullOrEmpty(employeeId) || !string.IsNullOrEmpty(name))
+                {
+                    query = query.Where(x => (x.Id.ToString() == employeeId || employeeId == null) && (x.Name.Contains(name) || name == null)).ToList();
+                }
+
+                return query;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public async Task<Employee> GetEmployee(int id)
+        public async Task<ResponseViewModel> GetEmployee(int id)
         {
-            return await _empRepo.Get(id);
+            var employees = _empRepo.GetAll().ToList();
+            var departments = _depRepo.GetAll().ToList();
+
+            var query = (from e in employees // outer sequence
+                         join d in departments //inner sequence 
+                         on e.DepartmentId equals d.Id // key selector 
+                         select new ResponseViewModel
+                         { // result selector 
+                             Id = e.Id,
+                             Username = e.Username,
+                             Password = e.Password,
+                             Name = e.Name,
+                             Birthday = e.Birthday,
+                             Email = e.Email,
+                             PhoneNumber = e.PhoneNumber,
+                             DepartmentId = d.Id,
+                             DepartmentName = d.DepartmentName
+                         }).ToList();
+
+            var employee = await _empRepo.Get(id);
+            if(employee == null)
+            {
+                return null;
+            }
+
+            var check = query.FirstOrDefault(x => x.DepartmentId == employee.DepartmentId);
+            if (check == null)
+            { 
+                return null;
+            }
+            return check;
         }
 
         public async Task<bool> Create(Employee employee)
@@ -61,12 +119,12 @@ namespace Test.Services.Implement
                 var result = new Employee
                 {
                     Username = employee.Username,
-                    //Password = employee.Password,
                     Password = BCrypt.Net.BCrypt.HashPassword(employee.Password),
                     Name = employee.Name,
                     Birthday = employee.Birthday,
                     Email = employee.Email,
-                    PhoneNumber = employee.PhoneNumber
+                    PhoneNumber = employee.PhoneNumber,
+                    DepartmentId = employee.DepartmentId
                 };
 
                 UnitOfWork.BeginTransaction();
@@ -97,6 +155,7 @@ namespace Test.Services.Implement
                 existingEmployee.Birthday = employee.Birthday;
                 existingEmployee.Email = employee.Email;
                 existingEmployee.PhoneNumber = employee.PhoneNumber;
+                existingEmployee.DepartmentId = employee.DepartmentId;
 
                 UnitOfWork.BeginTransaction();
                 await _empRepo.Update(existingEmployee);

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using System.Text.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Web.Controllers
 {
@@ -32,46 +33,56 @@ namespace Web.Controllers
 
         public async Task<IActionResult> Login(Login user)
         {
-            //var person = new Login 
-            //{
-            //    Username = "",
-            //    Password = "test1"
-            //};
-
-            var json = System.Text.Json.JsonSerializer.Serialize(user);
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
-
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-                var response = await client.PostAsync(_configuration["ApiUrl"] + "api/Auth/login", data);
+                var json = System.Text.Json.JsonSerializer.Serialize(user);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (result == "Invalid Credentials")
+                using (var client = new HttpClient())
                 {
-                    TempData["Message"] = "Incorrect username or password";
-                    return Redirect("~/Auth/Index");
-                }
+                    client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+                    var response = await client.PostAsync(_configuration["ApiUrl"] + "api/Auth/login", data);
 
-                //if (!string.IsNullOrEmpty(result))
-                //{
-                //    var options = new JsonSerializerOptions
-                //    {
-                //        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                //    };
+                    var result = await response.Content.ReadAsStringAsync();
 
-                //    var dataJson = JsonSerializer.Deserialize<LoginResponse>(result, options);
+                    if (result == "Invalid Credentials")
+                    {
+                        TempData["Message"] = "Incorrect username or password";
+                        return Redirect("~/Auth/Index");
+                    }
 
-                //    HttpContext.Session.SetString("AccessToken", dataJson.Token);
+                    if (!string.IsNullOrEmpty(result))
+                    {
+                        //var options = new JsonSerializerOptions
+                        //{
+                        //    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                        //    WriteIndented = true
+                        //};
 
-                //}
+                        //var dataJson = System.Text.Json.JsonSerializer.Deserialize<string>(result, options);
 
-                if (!string.IsNullOrEmpty(result))
-                {
-                    HttpContext.Session.SetString("AccessToken", result);
+                        HttpContext.Session.SetString("AccessToken", result);
+                        HttpContext.Response.Cookies.Append("AccessToken", result, new CookieOptions
+                        {
+                            Expires = null,
+                            HttpOnly = true,
+                            Secure = true,
+                        });
+                    }
+
+                    //if (!string.IsNullOrEmpty(result))
+                    //{
+                    //    string jsonSave = JsonConvert.SerializeObject(result);
+                    //    var session = HttpContext.Session;
+                    //    session.SetString("AccessToken", jsonSave);
+                    //}
                 }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+                
             return Redirect("~/Employee/Index");
         }
 

@@ -18,12 +18,19 @@ namespace Test.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEmployees(string id, string name)
+        public async Task<IActionResult> GetEmployees(string employeeId, string name)
         {
-            var employees = await _empService.GetAllEmployee(id, name);
+            try
+            {
+                var employees = await _empService.GetAllEmployee(employeeId, name);
 
-            return Ok(employees);
-        }
+                return Ok(employees);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+         }
 
         [HttpGet("getId/{id}")]
         public async Task<IActionResult> GetEmployee(int id)
@@ -61,7 +68,7 @@ namespace Test.WebAPI.Controllers
                     }
 
                     await _empService.Create(employee);
-                    return CreatedAtAction("GetEmployee", new { employee.Id }, employee);
+                    return CreatedAtAction("GetEmployee", new { Id = employee.Id }, employee);
                 }
                 return new JsonResult("Create Employee Error") { StatusCode = 500 };
             }
@@ -88,15 +95,23 @@ namespace Test.WebAPI.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var item = await _empService.GetEmployee(id);
-            if(item == null)
+            try
             {
-                return NotFound($"Employee with Id: {id} was not found");
+                var item = await _empService.GetEmployee(id);
+                if (item == null)
+                {
+                    return NotFound($"Employee with Id: {id} was not found");
+                }
+
+                await _empService.Delete(id);
+
+                return Ok($"Deleted employee with Id: {id} success");
             }
-
-            await _empService.Delete(id);
-
-            return Ok($"Deleted employee with Id: {id} success");
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         //[HttpGet("{search}")]

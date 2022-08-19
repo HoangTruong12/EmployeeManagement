@@ -31,7 +31,8 @@ namespace Test.Services.Implement
                     Name = employee.Name,
                     Birthday = employee.Birthday,
                     Email = employee.Email,
-                    PhoneNumber = employee.PhoneNumber
+                    PhoneNumber = employee.PhoneNumber,
+                    DepartmentId = employee.DepartmentId,  
                 };
 
                 UnitOfWork.BeginTransaction();

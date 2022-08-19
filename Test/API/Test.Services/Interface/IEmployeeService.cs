@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Test.Modal.Dto;
 using Test.Modal.Entities;
 
 namespace Test.Services.Interface
@@ -7,8 +8,8 @@ namespace Test.Services.Interface
     public interface IEmployeeService
     {
         //List<Employee> GetAllEmployee(string name);
-        Task<IEnumerable<Employee>> GetAllEmployee(string id, string name);
-        Task<Employee> GetEmployee(int id);
+        Task<IEnumerable<ResponseViewModel>> GetAllEmployee(string employeeId, string name);
+        Task<ResponseViewModel> GetEmployee(int id);
         Task<bool> Create(Employee employee);
         Task<bool> Update(int id, Employee employee);
         Task<bool> Delete(int id);

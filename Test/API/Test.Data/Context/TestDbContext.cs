@@ -9,5 +9,7 @@ namespace Test.Data.Context
         }
 
         public DbSet<Modal.Entities.Employee> Employees { get; set; }
+        public DbSet<Modal.Entities.Department> Departments { get; set; }
+        public DbSet<Modal.Entities.Notification> Notifications { get; set; }
     }
 }

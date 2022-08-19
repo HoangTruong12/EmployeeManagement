@@ -11,7 +11,7 @@ namespace Test.Services.Interface
     public interface IExcelService
     {
         string Download();
-        Task<bool> Upload(IFormFile file);
+        Task<bool> Import(IFormFile file);
         bool CheckIfExcelFile(IFormFile file);
     }
 }

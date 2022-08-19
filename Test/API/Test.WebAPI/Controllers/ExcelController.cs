@@ -13,6 +13,7 @@ using Test.Services.Interface;
 
 namespace Test.WebAPI.Controllers
 {
+    [Authorize]
     public class ExcelController : BaseController
     {
         private readonly IExcelService _excelService;
@@ -28,13 +29,13 @@ namespace Test.WebAPI.Controllers
             return content;
         }
 
-        [HttpPost("upload")]
-        public async Task<IActionResult> Upload(IFormFile file)
+        [HttpPost("import")]
+        public async Task<IActionResult> Import(IFormFile file)
         {
             bool checkIfExcelFile = _excelService.CheckIfExcelFile(file);
             if (checkIfExcelFile)
             {
-                await _excelService.Upload(file);
+                await _excelService.Import(file);
             }
             else
             {

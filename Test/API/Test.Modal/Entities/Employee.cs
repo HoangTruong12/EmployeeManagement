@@ -42,5 +42,9 @@ namespace Test.Modal.Entities
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
+
+        public int DepartmentId { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
+        //public virtual Department Department { get; set; }
     }
 }
