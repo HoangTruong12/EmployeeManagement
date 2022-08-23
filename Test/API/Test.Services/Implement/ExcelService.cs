@@ -21,12 +21,10 @@ namespace Test.Services.Implement
     public class ExcelService : BaseService, IExcelService
     {
         private readonly IRepository<Employee> _empRepo;
-        private readonly IConfiguration _configuration;
 
-        public ExcelService(IUnitOfWork unitOfWork, IRepository<Employee> empRepo, IConfiguration configuration)
+        public ExcelService(IUnitOfWork unitOfWork, IRepository<Employee> empRepo)
             : base(unitOfWork)
         {
-            _configuration = configuration;
             _empRepo = empRepo;
         }
 

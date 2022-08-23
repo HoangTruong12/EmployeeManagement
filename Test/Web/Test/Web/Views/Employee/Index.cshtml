@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Web.Models.ResponseViewModel>
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,6 +9,7 @@
 <h1 class="text-center">Employee Management</h1>
 
 <p>
+    @*<a onclick="showInPopup('@Url.Action("Create", "Employee", null, Context.Request.Scheme)', 'Create New')" class="btn btn-info text-white">Create New</a>*@
     <a class="btn btn-info" asp-action="Create">Create New</a>
 </p>
 
@@ -53,15 +53,11 @@
             Notification
         </button>
         <div class="dropdown-content">
-            <a href="">Notify an employee</a>
-            <a onclick="showInPopup('@Url.Action("Create", "Employee", null, Context.Request.Scheme)')">Notify to all employees</a>
+            <a onclick="showInPopup('@Url.Action("Create", "Employee", null, Context.Request.Scheme)')">Notify an employee</a>
+            <a onclick="showInPopup('@Url.Action("Create", "Notification", null, Context.Request.Scheme)')">Notify to all employees</a>
         </div>
     </div>
 </div>
-
-
-
-
 
 <table class="table" style="margin-top:30px">
     <thead>
@@ -73,8 +69,8 @@
                 @Html.DisplayNameFor(model => model.Username)
             </th>
             @*<th hidden>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -110,46 +106,46 @@
         {
             @foreach (var item in Model)
             {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        @*<td hidden>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Birthday)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td hidden>
-            @Html.DisplayFor(modelItem => item.DepartmentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartmentName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" }) |
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    @*<td hidden>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td hidden>
+                        @Html.DisplayFor(modelItem => item.DepartmentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartmentName)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) |*@
+                        <a onclick="showInPopup('@Url.Action("Edit", "Employee", new { id = item.Id }, Context.Request.Scheme)', 'Edit')" class="btn btn-info text-white">Edit</a> |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" }) |
 
-            <a onclick="Delete(@item.Id)" class="btn btn-info" style="color:white;">@*<i class="fa fa-trash"></i>*@Delete</a>
-        </td>
-    </tr>
+                        <a onclick="Delete(@item.Id)" class="btn btn-info text-white">@*<i class="fa fa-trash"></i>*@Delete</a>
+                    </td>
+                </tr>
             }
         }
     </tbody>
 </table>
-
 
 @section scripts{
     <script>

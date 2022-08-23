@@ -16,7 +16,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class EmployeeController : BaseController
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -50,13 +50,14 @@ namespace Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string employeeId, string name)
         {
+            ViewBag.Username = HttpContext.Items["User"];
             ViewData["GetId"] = employeeId;
             ViewData["GetName"] = name;
  
             client.BaseAddress = new Uri(_configuration["ApiUrl"]);
 
-            //client.DefaultRequestHeaders.Authorization =
-            //      new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+            client.DefaultRequestHeaders.Authorization =
+                  new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
             string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?employeeId=" + employeeId + "&name=" + name);
             var res = JsonConvert.DeserializeObject<List<ResponseViewModel>>(jsonStr).ToList();
@@ -108,94 +109,120 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Employee employee)
         {
-            if (ModelState.IsValid)
+            try
             {
-                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-                
-                client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-
-                var url = _configuration["ApiUrl"] + "api/Employee/create";
-
-                var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await client.PostAsync(url, stringContent);
-
-                var message = response.Content.ReadAsStringAsync().Result;
-
-                if (message == "Username already exist")
-                    TempData["FailMessage"] = "Username already exist";
-
-                if (message == "Email already exist")
-                    TempData["FailMessage"] = "Email already exist";
-
-                if (message == "Phone number already exist")
-                    TempData["FailMessage"] = "Phone number already exist";
-
-                if (response.IsSuccessStatusCode)
+                if (ModelState.IsValid)
                 {
-                    TempData["SuccessMessage"] = "Created Successfully";
-                    return RedirectToAction(nameof(Index));
-                }
-            }
+                    client.BaseAddress = new Uri(_configuration["ApiUrl"]);
 
-            return View(employee);
+                    client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                    var url = _configuration["ApiUrl"] + "api/Employee/create";
+
+                    var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await client.PostAsync(url, stringContent);
+
+                    var message = response.Content.ReadAsStringAsync().Result;
+
+                    if (message == "Username already exist")
+                        TempData["FailMessage"] = "Username already exist";
+
+                    if (message == "Email already exist")
+                        TempData["FailMessage"] = "Email already exist";
+
+                    if (message == "Phone number already exist")
+                        TempData["FailMessage"] = "Phone number already exist";
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        TempData["SuccessMessage"] = "Created Successfully";
+                        //return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index", null) });
+                        return RedirectToAction("Index", "Employee");
+                    }
+                }
+
+                //return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Create", employee) });
+                return RedirectToAction("Create", "Employee");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         // GET: EmployeeController/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
-            }
-
-            client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-            client.DefaultRequestHeaders.Authorization =
-                  new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-
-            string jsonStr = await client.GetStringAsync("api/Employee/getId/" + id);
-
-            var res = JsonConvert.DeserializeObject<Employee>(jsonStr);
-
-            if (res == null)
-            {
-                return NotFound();
-            }
-            return View(res);
-        }
-
-        // POST: EmployeeController/Edit/5
-        [HttpPost]
-        public async Task<IActionResult> Edit(int? id, Employee employee)
-        {
-            if (ModelState.IsValid)
-            {
-                if (id != employee.Id)
+                if (id == null)
                 {
                     return NotFound();
                 }
-
 
                 client.BaseAddress = new Uri(_configuration["ApiUrl"]);
 
                 client.DefaultRequestHeaders.Authorization =
                       new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
-                var url = "api/Employee/update/" + id;
-                var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+                string jsonStr = await client.GetStringAsync("api/Employee/getId/" + id);
 
-                HttpResponseMessage response = await client.PutAsync(url, stringContent);
+                var res = JsonConvert.DeserializeObject<Employee>(jsonStr);
 
-                if (response.IsSuccessStatusCode)
+                if (res == null)
                 {
-                    TempData["SuccessMessage"] = "Updated Successfully";
-                    return RedirectToAction(nameof(Index));
+                    return NotFound();
                 }
+                return View(res);
             }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+           
+        }
 
-            return View(employee);
+        // POST: EmployeeController/Edit/5
+        [HttpPost]
+        public async Task<IActionResult> Edit(int? id, Employee employee)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (id != employee.Id)
+                    {
+                        return NotFound();
+                    }
+
+
+                    client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+                    client.DefaultRequestHeaders.Authorization =
+                          new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                    var url = "api/Employee/update/" + id;
+                    var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await client.PutAsync(url, stringContent);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        TempData["SuccessMessage"] = "Updated Successfully";
+                        return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", null) });
+                    }
+                }
+
+                return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Edit", employee)});
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
 
         }
 

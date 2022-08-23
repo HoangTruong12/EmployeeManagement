@@ -27,19 +27,19 @@
                     </div>
                 </div>
                 <div class="col-md-2 d-flex mt-4 font-weight-bold">
-                    @*<div>
-                        <span>Hi</span>
-                    </div>*@
+                    <div>
+                        <span>Hi @ViewBag.Username</span>
+                    </div>
                     <div class="bell">
                         <a href=""><i class="fa-solid fa-bell"></i></a>
                         <div class="number-notification">
-                            <span id="badgecounter">10</span>
+                            <span id="badgecounter"></span>
                         </div>
                         <div class="show-notification">
                             <div id="articleList"></div>
                         </div>
                     </div>
-                    
+
                     <div class="user center-div">
                         <ul>
                             <li><a class="btn btn-sm btn-danger" asp-area="" asp-controller="Auth" asp-action="Logout" style="float: right;">LogOut</a></li>
@@ -56,11 +56,27 @@
         </main>
     </div>
 
-    @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="modal" tabindex="-1" role="dialog" id="form-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
         </div>
-    </footer>*@
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2022 - Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -69,6 +85,10 @@
 
     <script src="~/alertifyjs/alertify.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/notification.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

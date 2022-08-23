@@ -43,7 +43,7 @@ namespace Web.Controllers
                     client.BaseAddress = new Uri(_configuration["ApiUrl"]);
                     var response = await client.PostAsync(_configuration["ApiUrl"] + "api/Auth/login", data);
 
-                    var result = await response.Content.ReadAsStringAsync();
+                    var result = response.Content.ReadAsStringAsync().Result;
 
                     if (result == "Invalid Credentials")
                     {
@@ -94,39 +94,46 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(Employee employee)
         {
-
-            if (ModelState.IsValid)
+            try
             {
-                using (var client = new HttpClient())
+                if (ModelState.IsValid)
                 {
-                    client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-                    var url = _configuration["ApiUrl"] + "api/Auth/register";
-
-                    var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = await client.PostAsync(url, stringContent);
-
-                    var message = response.Content.ReadAsStringAsync().Result;
-
-                    if (message == "Username already exist")
-                        TempData["FailMessage"] = "Username already exist";
-
-                    if (message == "Email already exist")
-                        TempData["FailMessage"] = "Email already exist";
-
-                    if (message == "Phone number already exist")
-                        TempData["FailMessage"] = "Phone number already exist";
-
-                    if (response.IsSuccessStatusCode)
+                    using (var client = new HttpClient())
                     {
-                        //TempData["SuccessMessage"] = "Register Successfully";
-                        return RedirectToAction(nameof(Index));
+                        client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+                        var url = _configuration["ApiUrl"] + "api/Auth/register";
+
+                        var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+
+                        HttpResponseMessage response = await client.PostAsync(url, stringContent);
+
+                        var message = response.Content.ReadAsStringAsync().Result;
+
+                        if (message == "Username already exist")
+                            TempData["FailMessage"] = "Username already exist";
+
+                        if (message == "Email already exist")
+                            TempData["FailMessage"] = "Email already exist";
+
+                        if (message == "Phone number already exist")
+                            TempData["FailMessage"] = "Phone number already exist";
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            TempData["SuccessMessage"] = "Register Successfully";
+                            return RedirectToAction(nameof(Index));
+                        }
                     }
                 }
-            }
 
-            return View(employee);
+                return View(employee);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public IActionResult Logout()

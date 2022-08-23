@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Test.Modal.Dto;
@@ -22,16 +23,24 @@ namespace Test.WebAPI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginDto request)
         {
-            var user = _loginService.Authenticate(request);
-
-            if(user != null)
+            try
             {
-                var result = await _loginService.Login(request);
+                var user = _loginService.Authenticate(request);
 
-                return Ok(result);
+                if (user != null)
+                {
+                    var result = await _loginService.Login(request);
+
+                    return Ok(result);
+                }
+
+                return BadRequest("Invalid Credentials");
             }
-
-            return BadRequest("Invalid Credentials");
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         [HttpPost("register")]

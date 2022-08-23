@@ -18,10 +18,10 @@
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
-            <label asp-for="Id" class="control-label"></label>
-            <input asp-for="Id" class="form-control" />
-            <span asp-validation-for="Id" class="text-danger"></span>
-        </div>*@
+                    <label asp-for="Id" class="control-label"></label>
+                    <input asp-for="Id" class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="Username" class="control-label"></label>
                 <input asp-for="Username" class="form-control" />
@@ -53,18 +53,17 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-            <label asp-for="DepartmentId" class="control-label"></label>
-            <input asp-for="DepartmentId" class="form-control" />
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <input asp-for="DepartmentId" class="form-control" />
                 <span asp-validation-for="DepartmentId" class="text-danger"></span>
-        </div>
+            </div>
             @*<div class="form-group">
-                @Html.LabelFor(model => model.DepartmentId, new { @class = "control=label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.DepartmentId, new SelectList(ViewBag.DepartmentList, "DepartmentId", "DepartmentName"), "Choose Department", new { onchange = "getDepartment()", @id = "DropDownListDepartment" })
-                    @Html.ValidationMessageFor(model => model.DepartmentId)
-
-                </div>
-            </div>*@
+                    @Html.LabelFor(model => model.DepartmentId, new { @class = "control=label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.DepartmentId, new SelectList(ViewBag.DepartmentList, "DepartmentId", "DepartmentName"), "Choose Department", new { onchange = "getDepartment()", @id = "DropDownListDepartment" })
+                        @Html.ValidationMessageFor(model => model.DepartmentId)
+                    </div>
+                </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -109,4 +108,3 @@
         }
     </script>
 }
-

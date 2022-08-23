@@ -8,7 +8,7 @@ using Test.Services.Interface;
 
 namespace Test.WebAPI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class EmployeeController : BaseController
     {
         private readonly IEmployeeService _empService;

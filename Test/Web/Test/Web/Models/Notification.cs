@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using Test.Modal.Interfaces;
+using Web.Models;
 
 namespace Test.Modal.Entities
 {
-    public class Notification : IEntity
+    public class Notification
     {
         [Key]
         public int Id { get; set; }

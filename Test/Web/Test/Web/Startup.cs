@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Web.Hubs;
 
 namespace Web
 {
@@ -42,6 +43,7 @@ namespace Web
            });
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddSignalR();
 
             //services.AddScoped<CustomActionFilter>();
             services.AddHttpContextAccessor();
@@ -92,7 +94,9 @@ namespace Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Employee}/{action=Index}/{id?}");
-                    //pattern: "{controller=Auth}/{action=Index}");
+                //pattern: "{controller=Auth}/{action=Index}");
+
+                endpoints.MapHub<NotificationHub>("/notificationHub");
             });
         }
     }

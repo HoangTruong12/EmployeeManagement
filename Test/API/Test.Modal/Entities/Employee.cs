@@ -28,8 +28,7 @@ namespace Test.Modal.Entities
         public string Name { get; set; }
        
         [Required(ErrorMessage = "Birthday is required")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}", ApplyFormatInEditMode =true)]
+        [DisplayFormat(DataFormatString ="{0:MM/dd/yyyy}", ApplyFormatInEditMode =true)]
         public string Birthday { get; set; }
 
         [Required(ErrorMessage = "You must provide email")]
@@ -44,7 +43,6 @@ namespace Test.Modal.Entities
         public string PhoneNumber { get; set; }
 
         public int DepartmentId { get; set; }
-        public virtual ICollection<Notification> Notifications { get; set; }
         //public virtual Department Department { get; set; }
     }
 }

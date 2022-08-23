@@ -9,7 +9,7 @@ using Test.Data.Context;
 namespace Test.Data.Migrations
 {
     [DbContext(typeof(TestDbContext))]
-    [Migration("20220817095226_Initial")]
+    [Migration("20220823035909_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,6 +78,33 @@ namespace Test.Data.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("Test.Modal.Entities.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reciver")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Test.Modal.Entities.Employee", b =>

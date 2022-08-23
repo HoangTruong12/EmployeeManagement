@@ -78,6 +78,33 @@ namespace Test.Data.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("Test.Modal.Entities.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateCreate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reciver")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("Test.Modal.Entities.Employee", b =>
                 {
                     b.HasOne("Test.Modal.Entities.Department", null)

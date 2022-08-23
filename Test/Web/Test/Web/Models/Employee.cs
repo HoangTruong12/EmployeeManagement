@@ -30,7 +30,7 @@ namespace Web.Models
 
         [Required(ErrorMessage = "Birthday is required")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public string Birthday { get; set; }
 
         [Required(ErrorMessage = "You must provide email")]

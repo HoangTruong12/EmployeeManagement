@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Web.Models;
 
 namespace Web
 {
@@ -51,6 +52,12 @@ namespace Web
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 context.Response.Headers["AccessToken"] = token;
 
+                var sub = jwtToken.Claims.First(x => x.Type == "sub").Value;
+                var pass = jwtToken.Claims.First(x => x.Type == "nameid").Value;
+                if (sub != null)
+                {
+                    context.Items["User"] = sub;     
+                }
             }
             catch (Exception ex)
             {

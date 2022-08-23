@@ -102,12 +102,12 @@ namespace Test.Services.Implement
                 return null;
             }
 
-            var check = query.FirstOrDefault(x => x.DepartmentId == employee.DepartmentId);
-            if (check == null)
+            var result = query.FirstOrDefault(x => x.DepartmentId == employee.DepartmentId);
+            if (result == null)
             { 
                 return null;
             }
-            return check;
+            return result;
         }
 
         public async Task<bool> Create(Employee employee)

@@ -20,6 +20,7 @@ namespace Test.Services
             services.AddScoped<IRegisterService, RegisterService>();
             services.AddScoped<IExcelService, ExcelService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<INotificationService, NotificationService>();
             return services;
         }
     }
