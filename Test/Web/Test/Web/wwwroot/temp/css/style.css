@@ -82,7 +82,7 @@ input.mb-1.form-control {
     width: 400px;
     min-height: 100px;
     top: 36px;
-    right: 10px;
+    right: -11px;
     border: 1px solid #007bff;
     border-radius: 10px;
     animation: show ease-in-out 0.5s;

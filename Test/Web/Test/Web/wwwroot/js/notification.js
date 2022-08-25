@@ -10,19 +10,21 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/notificationHub").
 //    this.DateCreate = DateCreate
 //}
 
-connection.on("sendToUser", (title, content, dateCreate) => {
+connection.on("sendToUser", (notificationJson) => {
+    var noti = JSON.parse(notificationJson)
+
     var strongtitle = document.createElement("strong");
-    strongtitle.textContent = title;
+    strongtitle.textContent = `${noti.Title}`;
 
     var smalldatecreate = document.createElement("small");
-    smalldatecreate.textContent = dateCreate;
+    smalldatecreate.textContent = `${noti.DateCreate}`;
 
     var divtitle = document.createElement("div");
     divtitle.appendChild(strongtitle);
     divtitle.appendChild(smalldatecreate);
 
     var divcontent = document.createElement("div");
-    divcontent.textContent = content;
+    divcontent.textContent = `${noti.Content}`;
 
     var divnoti = document.createElement("div");
     divnoti.appendChild(divtitle);
@@ -83,7 +85,6 @@ connection.on("ReceiveMessage", (message) => {
     
 });
 
-
 connection.start().then(function () {
     console.log(connection.Id);
 }).catch(function (err) {
@@ -93,4 +94,8 @@ connection.start().then(function () {
 connection.onreconnecting(error => {
     console.assert(connection.state === signalR.HubConnectionState.Reconnecting);
 });
+
+
+
+
 

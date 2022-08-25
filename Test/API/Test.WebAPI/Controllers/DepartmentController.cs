@@ -41,6 +41,17 @@ namespace Test.WebAPI.Controllers
 
             return Ok(item);
         }
-        
+
+        [HttpGet("getListDepartment")]
+        public async Task<IActionResult> ListUsername()
+        {
+            var list = await _depService.ListDepartment();
+            if (list != null)
+            {
+                return Ok(list);
+            }
+            return NotFound();
+        }
+
     }
 }

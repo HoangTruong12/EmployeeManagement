@@ -1,23 +1,31 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Test.Modal.Entities;
+using Web.Models;
 
 namespace Web.Hubs
 {
     public class NotificationHub : Hub
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IConfiguration _configuration;
+        public NotificationHub(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        {
+            _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
+        }
         private readonly static Dictionary<string, string> _ConnectionsMap = new Dictionary<string, string>();
         public override Task OnConnectedAsync()
         {
             try
             {
-
                 string reciver = (string)Context.GetHttpContext().Items["User"];
 
                 var connectionId = Context.ConnectionId;
@@ -69,7 +77,12 @@ namespace Web.Hubs
         private async Task<List<Notification>> GetNotifications(string reciver)
         {
             using var client = new HttpClient();
-            string url = $"https://localhost:44373/api/Notification/getNotificationByReciver/{reciver}";
+            //string url = $"https://localhost:44373/api/Notification/getNotificationByReciver/{reciver}";
+            string url = _configuration["ApiUrl"] + $"api/Notification/getNotificationByReciver/{reciver}";
+
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
             HttpResponseMessage response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {

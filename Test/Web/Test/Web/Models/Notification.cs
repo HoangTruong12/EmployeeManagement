@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Web.Models;
 
-namespace Test.Modal.Entities
+namespace Web.Models
 {
     public class Notification
     {

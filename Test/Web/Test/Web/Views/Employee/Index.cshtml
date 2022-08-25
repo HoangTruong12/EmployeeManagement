@@ -53,8 +53,10 @@
             Notification
         </button>
         <div class="dropdown-content">
-            <a onclick="showInPopup('@Url.Action("Create", "Employee", null, Context.Request.Scheme)')">Notify an employee</a>
-            <a onclick="showInPopup('@Url.Action("Create", "Notification", null, Context.Request.Scheme)')">Notify to all employees</a>
+            @*<a onclick="showInPopup('@Url.Action("SendToSpecificUser", "Notification", null, Context.Request.Scheme)')">Notify an employee</a>*@
+            @*<a onclick="showInPopup('@Url.Action("Create", "Notification", null, Context.Request.Scheme)')">Notify to all employees</a>*@
+            <a asp-action="SendNotificationToSpecificUser" asp-controller="Notification">Notify an employee</a>
+            <a asp-action="SendNoficationToAll" asp-controller="Notification">Notify to all employees</a>
         </div>
     </div>
 </div>
@@ -135,8 +137,8 @@
                         @Html.DisplayFor(modelItem => item.DepartmentName)
                     </td>
                     <td>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) |*@
-                        <a onclick="showInPopup('@Url.Action("Edit", "Employee", new { id = item.Id }, Context.Request.Scheme)', 'Edit')" class="btn btn-info text-white">Edit</a> |
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) |
+                       @* <a onclick="showInPopup('@Url.Action("Edit", "Employee", new { id = item.Id }, Context.Request.Scheme)', 'Edit')" class="btn btn-info text-white">Edit</a> |*@
                         @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" }) |
 
                         <a onclick="Delete(@item.Id)" class="btn btn-info text-white">@*<i class="fa fa-trash"></i>*@Delete</a>

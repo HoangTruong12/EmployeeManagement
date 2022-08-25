@@ -13,10 +13,12 @@ namespace Test.Services.Implement
     public class NotificationService: BaseService, INotificationService
     {
         private readonly IRepository<Notification> _notificationRepo;
+        private readonly IRepository<Employee> _empRepo;
 
-        public NotificationService(IUnitOfWork unitOfWork, IRepository<Notification> notificationRepo) : base(unitOfWork)
+        public NotificationService(IUnitOfWork unitOfWork, IRepository<Notification> notificationRepo, IRepository<Employee> empRepo) : base(unitOfWork)
         {
             _notificationRepo = notificationRepo;
+            _empRepo = empRepo;
         }
 
         public async Task<IEnumerable<Notification>> GetAllNotification()

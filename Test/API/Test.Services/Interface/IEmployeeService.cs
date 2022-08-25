@@ -16,5 +16,6 @@ namespace Test.Services.Interface
         bool CheckExistsUsernameEmployee(string username);
         bool CheckExistsEmailEmployee(string email);
         bool CheckExistsPhoneNumberEmployee(string phoneNumber);
+        Task<List<string>> ListUsername();
     }
 }

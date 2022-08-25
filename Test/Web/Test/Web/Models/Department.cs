@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Web.Models;
 
-namespace Test.Modal.Entities
+namespace Web.Models
 {
     public class Department
     {

@@ -36,5 +36,19 @@ namespace Test.Services.Implement
         {
             return await _depRepo.Get(id);
         }
+
+        public async Task<List<Department>> ListDepartment()
+        {
+            try
+            {
+                var list = _depRepo.GetAll().ToList();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }

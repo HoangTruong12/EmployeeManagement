@@ -234,5 +234,21 @@ namespace Test.Services.Implement
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<List<string>> ListUsername()
+        {
+            try
+            {
+                var list = _empRepo.GetAll().Select(u => u.Username).ToList();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
     }
 }

@@ -30,7 +30,7 @@ namespace Web.Controllers
         }
 
         HttpClient client = new HttpClient();
-
+       
         // GET: EmployeeController
         //[ValidateAntiForgeryToken]
 
@@ -71,6 +71,7 @@ namespace Web.Controllers
         {
             try
             {
+                ViewBag.Username = HttpContext.Items["User"];
                 if (id == null)
                 {
                     return NotFound();
@@ -100,8 +101,16 @@ namespace Web.Controllers
         }
 
         // GET: EmployeeController/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Username = HttpContext.Items["User"];
+
+            var list = await GetListDepartment();
+            if(list != null)
+            {
+                ViewBag.listDepartment = list;
+                return View();
+            }
             return View();
         }
 
@@ -163,6 +172,14 @@ namespace Web.Controllers
                     return NotFound();
                 }
 
+                ViewBag.Username = HttpContext.Items["User"];
+                var list = await GetListDepartment();
+                if (list != null)
+                {
+                    ViewBag.listDepartment = list;
+                    return View();
+                }
+
                 client.BaseAddress = new Uri(_configuration["ApiUrl"]);
 
                 client.DefaultRequestHeaders.Authorization =
@@ -222,8 +239,6 @@ namespace Web.Controllers
             {
                 throw ex;
             }
-            
-
         }
 
         [HttpPost]
@@ -250,6 +265,27 @@ namespace Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private async Task<List<Department>> GetListDepartment()
+        {
+            client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+            client.DefaultRequestHeaders.Authorization =
+                  new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+            string url = _configuration["ApiUrl"] + "api/Department/getListDepartment";
+
+            HttpResponseMessage response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var res = await response.Content.ReadAsStringAsync();
+                List<Department> department = JsonConvert.DeserializeObject<List<Department>>(res);
+                return department;
+            }
+
+            return null;
         }
     }
 }

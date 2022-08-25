@@ -8,6 +8,7 @@ using Test.Services.Interface;
 
 namespace Test.WebAPI.Controllers
 {
+    [Authorize]
     public class NotificationController : BaseController
     {
         private readonly INotificationService _notificationService;
@@ -46,5 +47,6 @@ namespace Test.WebAPI.Controllers
             var result = await _notificationService.Create(notification);
             return CreatedAtAction("GetNotification", new { Id = notification.Id }, result);
         }
+
     }
 }

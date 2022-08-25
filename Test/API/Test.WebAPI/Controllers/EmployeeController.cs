@@ -26,11 +26,11 @@ namespace Test.WebAPI.Controllers
 
                 return Ok(employees);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-         }
+        }
 
         [HttpGet("getId/{id}")]
         public async Task<IActionResult> GetEmployee(int id)
@@ -49,7 +49,7 @@ namespace Test.WebAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var checkUsername = _empService.CheckExistsUsernameEmployee(employee.Username);     
+                    var checkUsername = _empService.CheckExistsUsernameEmployee(employee.Username);
                     if (checkUsername)
                     {
                         return BadRequest("Username already exist");
@@ -83,7 +83,7 @@ namespace Test.WebAPI.Controllers
         {
             var item = await _empService.GetEmployee(id);
 
-            if(item != null)
+            if (item != null)
             {
                 await _empService.Update(id, employee);
                 return Ok(item);
@@ -107,31 +107,23 @@ namespace Test.WebAPI.Controllers
 
                 return Ok($"Deleted employee with Id: {id} success");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-            
+
         }
 
-        //[HttpGet("{search}")]
-        //public async Task<ActionResult<Employee>> Search(string name)
-        //{
-        //    try
-        //    {
-        //        var result = await _empService.Search(name);
-        //        if (result.Any())
-        //        {
-        //            return Ok(result);
-        //        }
-
-        //        return NotFound();
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
+        [HttpGet("getListUsername")]
+        public async Task<IActionResult> ListUsername()
+        {
+            var list = await _empService.ListUsername();
+            if (list != null)
+            {
+                return Ok(list);
+            }
+            return NotFound();
+        }
 
     }
 }

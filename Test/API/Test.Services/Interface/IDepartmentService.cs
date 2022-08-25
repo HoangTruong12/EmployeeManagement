@@ -10,5 +10,6 @@ namespace Test.Services.Interface
     {
         Task<IEnumerable<Department>> GetAllDepartment();
         Task<Department> GetDepartment(int id);
+        Task<List<Department>> ListDepartment();
     }
 }
