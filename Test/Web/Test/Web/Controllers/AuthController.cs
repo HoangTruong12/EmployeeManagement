@@ -86,8 +86,14 @@ namespace Web.Controllers
             return Redirect("~/Employee/Index");
         }
 
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
+            var list = await GetListDepartment();
+            if (list != null)
+            {
+                ViewBag.listDepartment = list;
+                return View();
+            }
             return View();
         }
 
@@ -122,12 +128,12 @@ namespace Web.Controllers
                         if (response.IsSuccessStatusCode)
                         {
                             TempData["SuccessMessage"] = "Register Successfully";
-                            return RedirectToAction(nameof(Index));
+                            return RedirectToAction("Index", "Auth");
                         }
                     }
                 }
-
                 return View(employee);
+                //return RedirectToAction("Register", "Auth");
             }
             catch(Exception ex)
             {
@@ -142,6 +148,27 @@ namespace Web.Controllers
             return Redirect("~/Auth/Index");
         }
 
+        private async Task<List<Department>> GetListDepartment()
+        {
+            using(var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+                string url = _configuration["ApiUrl"] + "api/Department/getListDepartment";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = await response.Content.ReadAsStringAsync();
+                    List<Department> department = JsonConvert.DeserializeObject<List<Department>>(res);
+                    return department;
+                }
+
+                return null;
+            }
+            
+        }
 
     }
 }

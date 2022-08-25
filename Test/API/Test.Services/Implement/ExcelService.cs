@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Test.Data.Repository;
 using Test.Data.UnitOfWork;
+using Test.Modal;
 using Test.Modal.Entities;
 using Test.Services.Interface;
 

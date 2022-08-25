@@ -167,17 +167,11 @@ namespace Web.Controllers
         {
             try
             {
+                ViewBag.Username = HttpContext.Items["User"];
+                
                 if (id == null)
                 {
                     return NotFound();
-                }
-
-                ViewBag.Username = HttpContext.Items["User"];
-                var list = await GetListDepartment();
-                if (list != null)
-                {
-                    ViewBag.listDepartment = list;
-                    return View();
                 }
 
                 client.BaseAddress = new Uri(_configuration["ApiUrl"]);
@@ -188,11 +182,17 @@ namespace Web.Controllers
                 string jsonStr = await client.GetStringAsync("api/Employee/getId/" + id);
 
                 var res = JsonConvert.DeserializeObject<Employee>(jsonStr);
-
                 if (res == null)
                 {
                     return NotFound();
                 }
+
+                //var list = await GetListDepartment();
+                //if (list != null)
+                //{
+                //    ViewBag.listDepartment = list;
+                //}
+
                 return View(res);
             }
             catch(Exception ex)
@@ -215,7 +215,6 @@ namespace Web.Controllers
                         return NotFound();
                     }
 
-
                     client.BaseAddress = new Uri(_configuration["ApiUrl"]);
 
                     client.DefaultRequestHeaders.Authorization =
@@ -229,11 +228,13 @@ namespace Web.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         TempData["SuccessMessage"] = "Updated Successfully";
-                        return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", null) });
+                        //return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", null) });
+                        return RedirectToAction("Index", "Employee");
                     }
                 }
 
-                return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Edit", employee)});
+                //return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Edit", employee)});
+                return View(employee);
             }
             catch(Exception ex)
             {
@@ -270,9 +271,6 @@ namespace Web.Controllers
         private async Task<List<Department>> GetListDepartment()
         {
             client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-            client.DefaultRequestHeaders.Authorization =
-                  new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
             string url = _configuration["ApiUrl"] + "api/Department/getListDepartment";
 

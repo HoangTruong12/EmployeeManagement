@@ -25,16 +25,16 @@
     </div>
 </div>
 
-@section scripts{
+@section Scripts{
     <script>
         $(function () {
             var successMessage = '@TempData["SuccessMessage"]'
             if (successMessage != '')
                 alertify.success(successMessage)
 
-            var failMessage = '@TempData["FailMessage"]'
+            @*var failMessage = '@TempData["FailMessage"]'
             if (failMessage != '')
-                alertify.error(failMessage)
+                alertify.error(failMessage)*@
 
         });
     </script>

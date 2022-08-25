@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Text;
 
-namespace Test.Modal.Entities
+namespace Test.Modal
 {
     public static class CommonMethods
     {

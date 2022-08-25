@@ -80,11 +80,11 @@ namespace Test.Services.Implement
             var employees = _empRepo.GetAll().ToList();
             var departments = _depRepo.GetAll().ToList();
 
-            var query = (from e in employees // outer sequence
-                         join d in departments //inner sequence 
-                         on e.DepartmentId equals d.Id // key selector 
+            var query = (from e in employees 
+                         join d in departments
+                         on e.DepartmentId equals d.Id 
                          select new ResponseViewModel
-                         { // result selector 
+                         { 
                              Id = e.Id,
                              Username = e.Username,
                              Password = e.Password,
