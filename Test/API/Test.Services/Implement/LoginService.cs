@@ -26,7 +26,6 @@ namespace Test.Services.Implement
             _configuration = configuration;
         }
 
-
         public async Task<string> Login(LoginDto login)
         {
             //var user = Authenticate(login);
