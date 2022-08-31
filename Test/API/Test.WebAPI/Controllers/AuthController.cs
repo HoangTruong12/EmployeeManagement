@@ -13,10 +13,12 @@ namespace Test.WebAPI.Controllers
     {
         private readonly ILoginService _loginService;
         private readonly IRegisterService _registerService;
-        public AuthController(ILoginService loginService, IRegisterService registerService)
+        private readonly ICheckExistsEmployeeService _checkExistsService;
+        public AuthController(ILoginService loginService, IRegisterService registerService, ICheckExistsEmployeeService checkExistsService)
         {
             _loginService = loginService;
             _registerService = registerService;
+            _checkExistsService = checkExistsService;
         }
 
         [HttpPost("login")]
@@ -50,19 +52,19 @@ namespace Test.WebAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var checkUsername = _registerService.CheckExistsUsernameEmployee(employee.Username);
+                    var checkUsername = _checkExistsService.CheckExistsUsernameEmployee(employee.Username);
                     if (checkUsername)
                     {
                         return BadRequest("Username already exist");
                     }
 
-                    var checkEmail = _registerService.CheckExistsEmailEmployee(employee.Email);
+                    var checkEmail = _checkExistsService.CheckExistsEmailEmployee(employee.Email);
                     if (checkEmail)
                     {
                         return BadRequest("Email already exist");
                     }
 
-                    var checkPhoneNumber = _registerService.CheckExistsPhoneNumberEmployee(employee.PhoneNumber);
+                    var checkPhoneNumber = _checkExistsService.CheckExistsPhoneNumberEmployee(employee.PhoneNumber);
                     if (checkPhoneNumber)
                     {
                         return BadRequest("Phone number already exist");

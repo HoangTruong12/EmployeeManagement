@@ -12,17 +12,19 @@ namespace Test.WebAPI.Controllers
     public class EmployeeController : BaseController
     {
         private readonly IEmployeeService _empService;
-        public EmployeeController(IEmployeeService empService)
+        private readonly ICheckExistsEmployeeService _checkExistsService;
+        public EmployeeController(IEmployeeService empService, ICheckExistsEmployeeService checkExistsService)
         {
             _empService = empService;
+            _checkExistsService = checkExistsService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEmployees(string employeeId, string name)
+        public async Task<IActionResult> GetEmployees(string username, string name)
         {
             try
             {
-                var employees = await _empService.GetAllEmployee(employeeId, name);
+                var employees = await _empService.GetAllEmployee(username, name);
 
                 return Ok(employees);
             }
@@ -49,19 +51,19 @@ namespace Test.WebAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var checkUsername = _empService.CheckExistsUsernameEmployee(employee.Username);
+                    var checkUsername = _checkExistsService.CheckExistsUsernameEmployee(employee.Username);
                     if (checkUsername)
                     {
                         return BadRequest("Username already exist");
                     }
 
-                    var checkEmail = _empService.CheckExistsEmailEmployee(employee.Email);
+                    var checkEmail = _checkExistsService.CheckExistsEmailEmployee(employee.Email);
                     if (checkEmail)
                     {
                         return BadRequest("Email already exist");
                     }
 
-                    var checkPhoneNumber = _empService.CheckExistsPhoneNumberEmployee(employee.PhoneNumber);
+                    var checkPhoneNumber = _checkExistsService.CheckExistsPhoneNumberEmployee(employee.PhoneNumber);
                     if (checkPhoneNumber)
                     {
                         return BadRequest("Phone number already exist");

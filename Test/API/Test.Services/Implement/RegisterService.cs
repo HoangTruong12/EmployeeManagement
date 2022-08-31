@@ -47,47 +47,5 @@ namespace Test.Services.Implement
             }
         }
 
-        public bool CheckExistsEmailEmployee(string email)
-        {
-            try
-            {
-                var checkExistEmail = _empRepo.Get(x => x.Email == email);
-
-                return (checkExistEmail != null && checkExistEmail.Count() > 0);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public bool CheckExistsPhoneNumberEmployee(string phoneNumber)
-        {
-            try
-            {
-                var checkExistPhoneNumber = _empRepo.Get(x => x.PhoneNumber == phoneNumber);
-
-                return (checkExistPhoneNumber != null && checkExistPhoneNumber.Count() > 0);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public bool CheckExistsUsernameEmployee(string username)
-        {
-            try
-            {
-                var checkExistUsername = _empRepo.Get(x => x.Username == username);
-
-                return (checkExistUsername != null && checkExistUsername.Count() > 0);
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
     }
 }

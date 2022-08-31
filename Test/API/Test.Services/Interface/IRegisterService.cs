@@ -10,8 +10,5 @@ namespace Test.Services.Interface
     public interface IRegisterService
     {
         Task<bool> Register(Employee employee);
-        bool CheckExistsUsernameEmployee(string username);
-        bool CheckExistsEmailEmployee(string email);
-        bool CheckExistsPhoneNumberEmployee(string phoneNumber);
     }
 }

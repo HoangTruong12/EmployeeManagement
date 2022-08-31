@@ -19,7 +19,7 @@ namespace Test.Services.Implement
         public EmployeeService(IUnitOfWork unitOfWork, IRepository<Employee> empRepo, IRepository<Department> depRepo) : base(unitOfWork)
         {
             _empRepo = empRepo;
-            _depRepo = depRepo;
+            _depRepo = depRepo; 
         }
 
         //public async Task<Employee> GetAllEmployee()
@@ -39,18 +39,18 @@ namespace Test.Services.Implement
 
         //}
 
-        public async Task<IEnumerable<ResponseViewModel>> GetAllEmployee(string employeeId, string name)
+        public async Task<IEnumerable<ResponseViewModel>> GetAllEmployee(string username, string name)
         {
             try
             {
                 var employees = _empRepo.GetAll().ToList();
                 var departments = _depRepo.GetAll().ToList();
 
-                var query = (from e in employees // outer sequence
-                             join d in departments //inner sequence 
-                             on e.DepartmentId equals d.Id // key selector 
+                var query = (from e in employees 
+                             join d in departments 
+                             on e.DepartmentId equals d.Id 
                              select new ResponseViewModel
-                             { // result selector 
+                             {
                                  Id = e.Id,
                                  Username = e.Username,
                                  Password = e.Password,
@@ -62,9 +62,9 @@ namespace Test.Services.Implement
                                  DepartmentName = d.DepartmentName
                              }).ToList();
 
-                if (!string.IsNullOrEmpty(employeeId) || !string.IsNullOrEmpty(name))
+                if (!string.IsNullOrEmpty(username) || !string.IsNullOrEmpty(name))
                 {
-                    query = query.Where(x => (x.Id.ToString() == employeeId || employeeId == null) && (x.Name.Contains(name) || name == null)).ToList();
+                    query = query.Where(x => (x.Username == username || username == null) && (x.Name == name  || name == null)).ToList();
                 }
 
                 return query;
@@ -182,56 +182,6 @@ namespace Test.Services.Implement
             {
                 UnitOfWork.Rollback();
                 return false;
-            }
-        }
-
-        public bool CheckExistsEmailEmployee(string email)
-        {
-            try
-            {
-                var checkExistEmail = _empRepo.Get(x => x.Email == email);
-
-                return (checkExistEmail != null && checkExistEmail.Count() > 0);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public bool CheckExistsPhoneNumberEmployee(string phoneNumber)
-        {
-            try
-            {
-                var checkExistPhoneNumber = _empRepo.Get(x => x.PhoneNumber == phoneNumber);
-
-                return (checkExistPhoneNumber != null && checkExistPhoneNumber.Count() > 0);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public bool CheckExistsUsernameEmployee(string username)
-        {
-            try
-            {
-                var checkExistUsername = _empRepo.Get(x => x.Username == username);
-
-                //if (checkExist != null && checkExist.Count() > 0)
-                //{
-                //    return true;
-                //}
-
-                //return false;
-                return (checkExistUsername != null && checkExistUsername.Count() > 0);
-                //return _empRepo.GetAll().Any(x => x.Username == employee.Username);
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
             }
         }
 

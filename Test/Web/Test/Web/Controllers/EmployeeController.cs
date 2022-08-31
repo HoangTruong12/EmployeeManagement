@@ -48,10 +48,10 @@ namespace Web.Controllers
         //}
 
         [HttpGet]
-        public async Task<IActionResult> Index(string employeeId, string name)
+        public async Task<IActionResult> Index(string username, string name)
         {
             ViewBag.Username = HttpContext.Items["User"];
-            ViewData["GetId"] = employeeId;
+            ViewData["GetUsername"] = username;
             ViewData["GetName"] = name;
  
             client.BaseAddress = new Uri(_configuration["ApiUrl"]);
@@ -59,10 +59,9 @@ namespace Web.Controllers
             client.DefaultRequestHeaders.Authorization =
                   new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
-            string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?employeeId=" + employeeId + "&name=" + name);
+            string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?username=" + username + "&name=" + name);
             var res = JsonConvert.DeserializeObject<List<ResponseViewModel>>(jsonStr).ToList();
            
-
             return View(res);
         }
 

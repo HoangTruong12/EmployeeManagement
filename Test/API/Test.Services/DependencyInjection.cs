@@ -21,6 +21,8 @@ namespace Test.Services
             services.AddScoped<IExcelService, ExcelService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<INotificationService, NotificationService>();
+            services.AddScoped<ICheckExistsEmployeeService, CheckExistsEmployeeService>();
+            
             return services;
         }
     }
