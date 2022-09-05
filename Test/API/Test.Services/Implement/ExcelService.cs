@@ -151,7 +151,7 @@ namespace Test.Services.Implement
                     }
                     else
                     {
-                        rowNo++;
+                        rowNo = 2;
                     }
                 }
                 isSaveSuccess = true;

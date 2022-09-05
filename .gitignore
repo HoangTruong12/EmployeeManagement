@@ -3,3 +3,10 @@
 ################################################################################
 
 /Test/API/Test.Data/bin/Release/netstandard2.1
+/Test/API/Test.Modal/obj/Release/netstandard2.1
+/Test/API/Test.Services/bin/Release/netstandard2.1
+/Test/API/Test.Services/obj/Release/netstandard2.1
+/Test/API/Test.WebAPI/obj/Release/netcoreapp3.1
+/Test/Web/Test/Web/obj/Release/netcoreapp3.1
+/Test/Web/Test/Web/bin/Release/netcoreapp3.1
+/Test/API/Test.WebAPI/bin/Release/netcoreapp3.1

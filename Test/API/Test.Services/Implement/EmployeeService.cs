@@ -96,13 +96,9 @@ namespace Test.Services.Implement
                              DepartmentName = d.DepartmentName
                          }).ToList();
 
-            var employee = await _empRepo.Get(id);
-            if(employee == null)
-            {
-                return null;
-            }
+          
 
-            var result = query.FirstOrDefault(x => x.DepartmentId == employee.DepartmentId);
+            var result = query.FirstOrDefault(x => x.Id == id);
             if (result == null)
             { 
                 return null;
