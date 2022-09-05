@@ -110,11 +110,12 @@ namespace Test.Services.Implement
                 XLWorkbook workbook = XLWorkbook.OpenFromTemplate(filePath);
                 var sheets = workbook.Worksheets.First();
                 var rows = sheets.Rows().ToList();
-                foreach(var row in rows)
+                foreach (var row in rows)
                 {
                     if (rowNo != 1)
                     {
                         var username = row.Cell(1).Value.ToString();
+
                         if (string.IsNullOrWhiteSpace(username) || string.IsNullOrEmpty(username))
                         {
                             break;
@@ -123,12 +124,19 @@ namespace Test.Services.Implement
                         var passBcrypt = BCrypt.Net.BCrypt.HashPassword(row.Cell(2).Value.ToString());
 
                         Employee employee;
-                        employee = _empRepo.GetAll().Where(x => x.Username == row.Cell(1).Value.ToString()).FirstOrDefault();
+                        employee = _empRepo.GetAll().Where(x => x.Username == username).FirstOrDefault();
+
                         if (employee == null)
                         {
                             employee = new Employee();
                         }
-                        employee.Username = row.Cell(1).Value.ToString();
+
+                        if (username == employee.Username)
+                        {
+                            return false;
+                        }
+
+                        employee.Username = username;
                         employee.Password = passBcrypt;
                         employee.Name = row.Cell(3).Value.ToString();
                         employee.Birthday = row.Cell(4).Value.ToString();
@@ -139,10 +147,11 @@ namespace Test.Services.Implement
                         UnitOfWork.BeginTransaction();
                         await _empRepo.Add(employee);
                         UnitOfWork.Commit();
+
                     }
                     else
                     {
-                        rowNo = 2; 
+                        rowNo++;
                     }
                 }
                 isSaveSuccess = true;

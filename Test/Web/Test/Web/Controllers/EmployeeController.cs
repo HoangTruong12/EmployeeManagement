@@ -22,15 +22,13 @@ namespace Web.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger<EmployeeController> _logger;
 
-        public EmployeeController(ILogger<EmployeeController> logger, IConfiguration configuration, 
+        public EmployeeController(ILogger<EmployeeController> logger, IConfiguration configuration,
             IHttpContextAccessor httpContextAccessor) : base(configuration)
         {
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
         }
 
-        HttpClient client = new HttpClient();
-       
         // GET: EmployeeController
         //[ValidateAntiForgeryToken]
 
@@ -50,19 +48,22 @@ namespace Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string username, string name)
         {
-            ViewBag.Username = HttpContext.Items["User"];
-            ViewData["GetUsername"] = username;
-            ViewData["GetName"] = name;
- 
-            client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+            using(var client = new HttpClient())
+            {
+                ViewBag.Username = HttpContext.Items["User"];
+                ViewData["GetUsername"] = username;
+                ViewData["GetName"] = name;
 
-            client.DefaultRequestHeaders.Authorization =
-                  new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
 
-            string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?username=" + username + "&name=" + name);
-            var res = JsonConvert.DeserializeObject<List<ResponseViewModel>>(jsonStr).ToList();
-           
-            return View(res);
+                client.DefaultRequestHeaders.Authorization =
+                      new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee?username=" + username + "&name=" + name);
+                var res = JsonConvert.DeserializeObject<List<ResponseViewModel>>(jsonStr).ToList();
+
+                return View(res);
+            }
         }
 
         // GET: EmployeeController/Details/5
@@ -70,33 +71,37 @@ namespace Web.Controllers
         {
             try
             {
-                ViewBag.Username = HttpContext.Items["User"];
-                if (id == null)
+                using(var client = new HttpClient())
                 {
-                    return NotFound();
+                    ViewBag.Username = HttpContext.Items["User"];
+                    if (id == null)
+                    {
+                        return NotFound();
+                    }
+
+                    client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                    string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee/getId/" + id);
+
+                    var res = JsonConvert.DeserializeObject<ResponseViewModel>(jsonStr);
+
+                    if (res == null)
+                    {
+                        return NotFound();
+                    }
+
+                    return View(res);
                 }
-
-                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-
-                string jsonStr = await client.GetStringAsync(_configuration["ApiUrl"] + "api/Employee/getId/" + id);
-
-                var res = JsonConvert.DeserializeObject<ResponseViewModel>(jsonStr);
-
-                if (res == null)
-                {
-                    return NotFound();
-                }
-
-                return View(res);
+                
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-          
+
         }
 
         // GET: EmployeeController/Create
@@ -105,7 +110,7 @@ namespace Web.Controllers
             ViewBag.Username = HttpContext.Items["User"];
 
             var list = await GetListDepartment();
-            if(list != null)
+            if (list != null)
             {
                 ViewBag.listDepartment = list;
                 return View();
@@ -119,46 +124,48 @@ namespace Web.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-                    client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-
-                    var url = _configuration["ApiUrl"] + "api/Employee/create";
-
-                    var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = await client.PostAsync(url, stringContent);
-
-                    var message = response.Content.ReadAsStringAsync().Result;
-
-                    if (message == "Username already exist")
-                        TempData["FailMessage"] = "Username already exist";
-
-                    if (message == "Email already exist")
-                        TempData["FailMessage"] = "Email already exist";
-
-                    if (message == "Phone number already exist")
-                        TempData["FailMessage"] = "Phone number already exist";
-
-                    if (response.IsSuccessStatusCode)
+                    if (ModelState.IsValid)
                     {
-                        TempData["SuccessMessage"] = "Created Successfully";
-                        //return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index", null) });
-                        return RedirectToAction("Index", "Employee");
-                    }
-                }
+                        client.BaseAddress = new Uri(_configuration["ApiUrl"]);
 
-                //return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Create", employee) });
-                return RedirectToAction("Create", "Employee");
+                        client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                        var url = _configuration["ApiUrl"] + "api/Employee/create";
+
+                        var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+
+                        HttpResponseMessage response = await client.PostAsync(url, stringContent);
+
+                        var message = response.Content.ReadAsStringAsync().Result;
+
+                        if (message == "Username already exist")
+                            TempData["FailMessage"] = "Username already exist";
+
+                        if (message == "Email already exist")
+                            TempData["FailMessage"] = "Email already exist";
+
+                        if (message == "Phone number already exist")
+                            TempData["FailMessage"] = "Phone number already exist";
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            TempData["SuccessMessage"] = "Created Successfully";
+                            //return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index", null) });
+                            return RedirectToAction("Index", "Employee");
+                        }
+                    }
+                    //return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Create", employee) });
+                    return RedirectToAction("Create", "Employee");
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-            
+
         }
 
         // GET: EmployeeController/Edit/5
@@ -166,50 +173,11 @@ namespace Web.Controllers
         {
             try
             {
-                ViewBag.Username = HttpContext.Items["User"];
-                
-                if (id == null)
+                using (var client = new HttpClient())
                 {
-                    return NotFound();
-                }
+                    ViewBag.Username = HttpContext.Items["User"];
 
-                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-                client.DefaultRequestHeaders.Authorization =
-                      new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-
-                string jsonStr = await client.GetStringAsync("api/Employee/getId/" + id);
-
-                var res = JsonConvert.DeserializeObject<Employee>(jsonStr);
-                if (res == null)
-                {
-                    return NotFound();
-                }
-
-                //var list = await GetListDepartment();
-                //if (list != null)
-                //{
-                //    ViewBag.listDepartment = list;
-                //}
-
-                return View(res);
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-           
-        }
-
-        // POST: EmployeeController/Edit/5
-        [HttpPost]
-        public async Task<IActionResult> Edit(int? id, Employee employee)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    if (id != employee.Id)
+                    if (id == null)
                     {
                         return NotFound();
                     }
@@ -219,23 +187,71 @@ namespace Web.Controllers
                     client.DefaultRequestHeaders.Authorization =
                           new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
-                    var url = "api/Employee/update/" + id;
-                    var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+                    string jsonStr = await client.GetStringAsync("api/Employee/getId/" + id);
 
-                    HttpResponseMessage response = await client.PutAsync(url, stringContent);
+                    var res = JsonConvert.DeserializeObject<Employee>(jsonStr);
 
-                    if (response.IsSuccessStatusCode)
+                    if (res == null)
                     {
-                        TempData["SuccessMessage"] = "Updated Successfully";
-                        //return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", null) });
-                        return RedirectToAction("Index", "Employee");
+                        return NotFound();
                     }
+                    var list = await GetListDepartment();
+
+                    if (list != null)
+                    {
+                        ViewBag.listDepartment = list;
+                        return View(res);
+                    }
+
+                    return View(res);
                 }
 
-                //return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Edit", employee)});
-                return View(employee);
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        // POST: EmployeeController/Edit/5
+        [HttpPost]
+        public async Task<IActionResult> Edit(int? id, Employee employee)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    if (ModelState.IsValid)
+                    {
+                        if (id != employee.Id)
+                        {
+                            return NotFound();
+                        }
+
+                        client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+                        client.DefaultRequestHeaders.Authorization =
+                              new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                        var url = "api/Employee/update/" + id;
+                        var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+
+                        HttpResponseMessage response = await client.PutAsync(url, stringContent);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            TempData["SuccessMessage"] = "Updated Successfully";
+                            //return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", null) });
+                            return RedirectToAction("Index", "Employee");
+                        }
+                    }
+
+                    //return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Edit", employee)});
+                    return View(employee);
+                }
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -244,21 +260,24 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Delete(string id)
         {
-            client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-            client.DefaultRequestHeaders.Authorization =
-                  new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-
-            var deleteTask = client.DeleteAsync(_configuration["ApiUrl"] + "api/Employee/delete/" + id.ToString());
-
-            var result = deleteTask.Result;
-
-            if (result.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-                TempData["SuccessMessage"] = "Deleted Successfully";
-                return Json(new { msg= "Deleted Successfully", type= "Success" });
+                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+                client.DefaultRequestHeaders.Authorization =
+                      new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                var deleteTask = client.DeleteAsync(_configuration["ApiUrl"] + "api/Employee/delete/" + id.ToString());
+
+                var result = deleteTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                {
+                    TempData["SuccessMessage"] = "Deleted Successfully";
+                    return Json(new { msg = "Deleted Successfully", type = "Success" });
+                }
+                return Json(new { msg = "Deleted Failed", type = "Failed" });
             }
-            return Json(new { msg = "Deleted Failed", type = "Failed" });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -269,20 +288,24 @@ namespace Web.Controllers
 
         private async Task<List<Department>> GetListDepartment()
         {
-            client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-            string url = _configuration["ApiUrl"] + "api/Department/getListDepartment";
-
-            HttpResponseMessage response = await client.GetAsync(url);
-
-            if (response.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-                var res = await response.Content.ReadAsStringAsync();
-                List<Department> department = JsonConvert.DeserializeObject<List<Department>>(res);
-                return department;
+                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+                string url = _configuration["ApiUrl"] + "api/Department/getListDepartment";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = await response.Content.ReadAsStringAsync();
+                    List<Department> department = JsonConvert.DeserializeObject<List<Department>>(res);
+                    return department;
+                }
+
+                return null;
             }
 
-            return null;
         }
     }
 }

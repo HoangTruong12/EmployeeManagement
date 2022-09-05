@@ -92,6 +92,11 @@ namespace Web.Controllers
                         TempData["FailMessage"] = "Invalid file extension";
                     }
 
+                    if (message == "Username already exist")
+                    {
+                        TempData["FailMessage"] = "Username already exist - Upload failed";
+                    }
+
                     if (response.IsSuccessStatusCode)
                     {
                         TempData["SuccessMessage"] = "Import file excel successfully";
