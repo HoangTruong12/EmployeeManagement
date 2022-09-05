@@ -131,10 +131,10 @@ namespace Test.Services.Implement
                             employee = new Employee();
                         }
 
-                        if (username == employee.Username)
-                        {
-                            return false;
-                        }
+                        //if (username == employee.Username)
+                        //{
+                        //    return false;
+                        //}
 
                         employee.Username = username;
                         employee.Password = passBcrypt;

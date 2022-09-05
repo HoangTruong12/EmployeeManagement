@@ -35,11 +35,12 @@ namespace Test.WebAPI.Controllers
             bool checkIfExcelFile = _excelService.CheckIfExcelFile(file);
             if (checkIfExcelFile)
             {
-                var import = await _excelService.Import(file);
-                if (!import)
-                {
-                    return BadRequest("Username already exist");
-                }
+                //var import = await _excelService.Import(file);
+                //if (!import)
+                //{
+                //    return BadRequest("Username already exist");
+                //}
+                await _excelService.Import(file);
                 return Ok("Uploaded success");
             }
             else
