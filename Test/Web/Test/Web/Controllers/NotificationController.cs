@@ -84,7 +84,13 @@ namespace Web.Controllers
             try
             {
                 notification.Sender = (string)HttpContext.Items["User"];
-                //notification.Reciver = ;
+
+                if (notification.Reciver == null)
+                {
+                    TempData["ErrorMessage"] = "Please choose reciver";
+                    return RedirectToAction("SendNotificationToSpecificUser", "Notification");
+                }
+
                 notification.DateCreate = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
                 var result = await CreateNotification(notification);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Web.Models
@@ -13,6 +14,7 @@ namespace Web.Models
         public string Password { get; set; }
         public string Name { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public string Birthday { get; set; }
 
         public string Email { get; set; }

@@ -138,7 +138,6 @@ namespace Test.Services.Implement
             try
             {
                 var existingEmployee = _empRepo.GetAll().FirstOrDefault(x => x.Id == id);
-
                 if (existingEmployee == null)
                     await _empRepo.Add(employee);
 

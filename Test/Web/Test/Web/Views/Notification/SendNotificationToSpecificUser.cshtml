@@ -4,6 +4,8 @@
 }
 
 <link href="~/temp/css/noti.css" rel="stylesheet" />
+<link href="~/alertifyjs/css/alertify.min.css" rel="stylesheet" />
+<link href="~/alertifyjs/css/themes/default.min.css" rel="stylesheet" />
 
 <div class="container-xl px-4 mt-4">
 
@@ -47,7 +49,7 @@
                                 {
                                     <div class="mb-3">
                                         <label class="small mb-1">Send To?</label>
-                                        @Html.DropDownListFor(model => model.Reciver, new SelectList(list), "----- Select -----", new { @class = "form-control " })
+                                        @Html.DropDownListFor(model => model.Reciver, new SelectList(list), "----- Select Reciver -----", new { @class = "form-control " })
                                     </div>
                                 }
                             }
@@ -63,3 +65,16 @@
     </div>
 </div>
 
+
+<script src="~/alertifyjs/alertify.min.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+    $(function () {
+    var errorMessage = '@TempData["ErrorMessage"]'
+        if (errorMessage != '')
+            alertify.error(errorMessage)
+    });
+    </script>
+}
