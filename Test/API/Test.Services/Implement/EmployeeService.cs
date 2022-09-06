@@ -96,8 +96,6 @@ namespace Test.Services.Implement
                              DepartmentName = d.DepartmentName
                          }).ToList();
 
-          
-
             var result = query.FirstOrDefault(x => x.Id == id);
             if (result == null)
             { 

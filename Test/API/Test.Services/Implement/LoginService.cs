@@ -55,7 +55,7 @@ namespace Test.Services.Implement
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Issuer"],
                 claims,
-                expires: DateTime.Now.AddMinutes(10),
+                expires: DateTime.Now.AddHours(3),
                 signingCredentials: credentials
                 );
 

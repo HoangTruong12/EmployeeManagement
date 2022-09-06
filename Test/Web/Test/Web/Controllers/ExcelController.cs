@@ -101,7 +101,7 @@ namespace Web.Controllers
                     return RedirectToAction("Index", "Employee");
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
                 ViewBag.Error = ex.Message;
             }

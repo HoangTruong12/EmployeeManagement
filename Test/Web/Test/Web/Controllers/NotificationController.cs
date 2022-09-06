@@ -31,12 +31,10 @@ namespace Web.Controllers
             _hubContext = hubContext;
         }
 
-        HttpClient client = new HttpClient();
-
         public async Task<IActionResult> SendNoficationToAll()
         {
             ViewBag.Username = HttpContext.Items["User"];
-            return View("SendNoficationToAll");  
+            return View("SendNoficationToAll");
         }
 
         [HttpPost]
@@ -59,6 +57,7 @@ namespace Web.Controllers
                     return RedirectToAction("Index", "Employee");
                 }
                 return RedirectToAction("Create", "Notification");
+
             }
             catch (Exception ex)
             {
@@ -71,7 +70,7 @@ namespace Web.Controllers
             ViewBag.Username = HttpContext.Items["User"];
 
             var list = await GetListUsername();
-            if(list != null)
+            if (list != null)
             {
                 ViewBag.listUsername = list;
                 return View("SendNotificationToSpecificUser");
@@ -107,43 +106,49 @@ namespace Web.Controllers
 
         private async Task<string> CreateNotification(Notification notification)
         {
-            client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-            client.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-
-            var url = _configuration["ApiUrl"] + "api/Notification/sendNotification";
-
-            var stringContent = new StringContent(JsonConvert.SerializeObject(notification), Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = await client.PostAsync(url, stringContent);
-
-            if (response.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-                return "Ok";
+                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
+
+                client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                var url = _configuration["ApiUrl"] + "api/Notification/sendNotification";
+
+                var stringContent = new StringContent(JsonConvert.SerializeObject(notification), Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await client.PostAsync(url, stringContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return "Ok";
+                }
+                return response.Content.ReadAsStringAsync().Result;
             }
-            return response.Content.ReadAsStringAsync().Result;
-        } 
+        }
 
         private async Task<List<string>> GetListUsername()
         {
-            client.BaseAddress = new Uri(_configuration["ApiUrl"]);
-
-            client.DefaultRequestHeaders.Authorization =
-                  new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
-
-            string url = _configuration["ApiUrl"] + "api/Employee/getListUsername";
-
-            HttpResponseMessage response = await client.GetAsync(url);
-
-            if (response.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-                var res = await response.Content.ReadAsStringAsync();
-                List<string> username = JsonConvert.DeserializeObject<List<string>>(res);
-                return username;
-            }
+                client.BaseAddress = new Uri(_configuration["ApiUrl"]);
 
-            return null;
+                client.DefaultRequestHeaders.Authorization =
+                      new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
+
+                string url = _configuration["ApiUrl"] + "api/Employee/getListUsername";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = await response.Content.ReadAsStringAsync();
+                    List<string> username = JsonConvert.DeserializeObject<List<string>>(res);
+                    return username;
+                }
+
+                return null;
+            }
         }
     }
 }
