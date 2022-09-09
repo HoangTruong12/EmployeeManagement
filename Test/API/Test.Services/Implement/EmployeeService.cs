@@ -133,22 +133,18 @@ namespace Test.Services.Implement
             }
         }
 
-        public async Task<bool> Update(int id, Employee employee)
+        public async Task<bool> Update(int id, EmployeeUpdateRequest request)
         {
             try
             {
                 var existingEmployee = _empRepo.GetAll().FirstOrDefault(x => x.Id == id);
-                if (existingEmployee == null)
-                    await _empRepo.Add(employee);
 
-                //existingEmployee.Id = id;
-                existingEmployee.Username = employee.Username;
-                existingEmployee.Password = BCrypt.Net.BCrypt.HashPassword(employee.Password);
-                existingEmployee.Name = employee.Name;
-                existingEmployee.Birthday = employee.Birthday;
-                existingEmployee.Email = employee.Email;
-                existingEmployee.PhoneNumber = employee.PhoneNumber;
-                existingEmployee.DepartmentId = employee.DepartmentId;
+                existingEmployee.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
+                existingEmployee.Name = request.Name;
+                existingEmployee.Birthday = request.Birthday;
+                existingEmployee.Email = request.Email;
+                existingEmployee.PhoneNumber = request.PhoneNumber;
+                existingEmployee.DepartmentId = request.DepartmentId;
 
                 UnitOfWork.BeginTransaction();
                 await _empRepo.Update(existingEmployee);
