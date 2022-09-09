@@ -51,7 +51,7 @@ namespace Test.WebAPI.Middleware
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var sub = jwtToken.Claims.First(x => x.Type == "sub").Value;
-                var pass = jwtToken.Claims.First(x => x.Type == "nameid").Value;
+                //var pass = jwtToken.Claims.First(x => x.Type == "nameid").Value;
 
                 // check username trong token co ton tai trong db hay khong?
                 // ... code
@@ -59,14 +59,16 @@ namespace Test.WebAPI.Middleware
 
                 if (sub != null)
                 {
-                    context.Items["User"] =
-                        new LoginDto { Username = sub, Password = pass};
+                    //context.Items["User"] =
+                    //    new LoginDto { Username = sub, Password = pass};
+
+                    context.Items["User"] = sub;
                 }
 
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                context.Items["User"] = null;
             }
         }
     }

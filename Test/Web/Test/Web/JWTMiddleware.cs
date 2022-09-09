@@ -53,7 +53,7 @@ namespace Web
                 context.Response.Headers["AccessToken"] = token;
 
                 var sub = jwtToken.Claims.First(x => x.Type == "sub").Value;
-                var pass = jwtToken.Claims.First(x => x.Type == "nameid").Value;
+                //var pass = jwtToken.Claims.First(x => x.Type == "nameid").Value;
                 if (sub != null)
                 {
                     context.Items["User"] = sub;     
@@ -61,7 +61,7 @@ namespace Web
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                context.Items["User"] = null;
             }
         }
     }

@@ -74,7 +74,7 @@ namespace Web
                     {
                         context.Request.Headers.Add("Authorization", token);
                     }
-                }
+                 }
             
                 await next();
             });

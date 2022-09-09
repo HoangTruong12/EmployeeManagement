@@ -9,9 +9,11 @@ namespace Web
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var token = context.HttpContext.Request.Headers["Authorization"];
+            //var token = context.HttpContext.Request.Headers["Authorization"];
+            var token  = context.HttpContext.Items["User"];
 
-            if (string.IsNullOrEmpty(token))
+            //if (string.IsNullOrEmpty(token))
+            if (token == null)
             {
                 // not logged in
                 //tra ve trang login

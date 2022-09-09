@@ -47,7 +47,7 @@ namespace Test.Services.Implement
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, login.Username),
-                new Claim(JwtRegisteredClaimNames.NameId, login.Password),
+                //new Claim(JwtRegisteredClaimNames.NameId, login.Password),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
 

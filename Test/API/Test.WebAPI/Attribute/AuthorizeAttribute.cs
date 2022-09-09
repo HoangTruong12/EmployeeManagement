@@ -12,7 +12,8 @@ namespace Test.WebAPI
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var account = (LoginDto)context.HttpContext.Items["User"];
+            //var account = (LoginDto)context.HttpContext.Items["User"];
+            var account = context.HttpContext.Items["User"];
             if (account == null)
             {
                 // not logged in
