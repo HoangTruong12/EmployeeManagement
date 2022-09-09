@@ -66,5 +66,42 @@ namespace Test.Services.Implement
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool CheckExistPhoneNumberWhenUpdate(int id, string phoneNumber)
+        {
+            try
+            {
+                bool rs = false;
+                var checkPhone = _empRepo.GetAll().FirstOrDefault(x => x.PhoneNumber == phoneNumber);
+                if(checkPhone == null)
+                {
+                    return rs;
+                }
+               return rs = checkPhone.Id == id ? false : true;            
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool CheckExistEmailWhenUpdate(int id, string email)
+        {
+            try
+            {
+                bool rs = false;
+                var checkEmail = _empRepo.GetAll().FirstOrDefault(x => x.Email == email);
+                if (checkEmail == null)
+                {
+                    return rs;
+                }
+                return rs = checkEmail.Id == id ? false : true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

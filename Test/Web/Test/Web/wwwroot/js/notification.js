@@ -27,6 +27,7 @@ connection.on("sendToUser", (notificationJson) => {
     divcontent.textContent = `${noti.Content}`;
 
     var divnoti = document.createElement("div");
+    
     divnoti.appendChild(divtitle);
     divnoti.appendChild(divcontent);
 

@@ -37,7 +37,7 @@ namespace Test.WebAPI.Middleware
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
-
+                
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
@@ -52,6 +52,10 @@ namespace Test.WebAPI.Middleware
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var sub = jwtToken.Claims.First(x => x.Type == "sub").Value;
                 var pass = jwtToken.Claims.First(x => x.Type == "nameid").Value;
+
+                // check username trong token co ton tai trong db hay khong?
+                // ... code
+                //
 
                 if (sub != null)
                 {

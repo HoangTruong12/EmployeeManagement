@@ -94,7 +94,8 @@ input.mb-1.form-control {
     position: absolute;
     background: #fff;
     width: 400px;
-    min-height: 100px;
+    /*min-height: 100px;*/
+    height: 270px;
     top: 36px;
     right: -11px;
     border: 1px solid #007bff;
@@ -104,14 +105,19 @@ input.mb-1.form-control {
     display: none;
 }
 
-    .show-notification::before {
-        position: absolute;
-        content: "";
-        border: 10px solid #e1ba39;
-        border-color: transparent transparent #007bff transparent;
-        top: -20px;
-        right: 14px;
-    }
+.show-notification #articleList {
+    height: 100%;
+    overflow: hidden scroll;
+}
+.show-notification::before {
+    position: absolute;
+    content: "";
+    z-index: 3;
+    border: 10px solid #e1ba39;
+    border-color: transparent transparent #007bff transparent;
+    top: -20px;
+    right: 14px;
+}
 
 .bell:hover .show-notification {
     display: block;

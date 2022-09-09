@@ -11,7 +11,7 @@ namespace Test.Services.Interface
         Task<IEnumerable<ResponseViewModel>> GetAllEmployee(string username, string name);
         Task<ResponseViewModel> GetEmployee(int id);
         Task<bool> Create(Employee employee);
-        Task<bool> Update(int id, Employee employee);
+        Task<bool> Update(int id, EmployeeUpdateRequest request);
         Task<bool> Delete(int id);
         Task<List<string>> ListUsername();
     }

@@ -134,9 +134,11 @@ namespace Test.Services.Implement
                         employee.Username = username;
                         employee.Password = passBcrypt;
                         employee.Name = row.Cell(3).Value.ToString();
+
                         DateTime temp = (DateTime)row.Cell(4).Value;
                         var b = temp.ToString("yyyy-MM-dd");
-                        employee.Birthday = b.ToString();                       
+                        employee.Birthday = b.ToString();  
+                        
                         employee.Email = row.Cell(5).Value.ToString();
                         employee.PhoneNumber = row.Cell(6).Value.ToString();
                         employee.DepartmentId = int.Parse(row.Cell(7).Value.ToString());

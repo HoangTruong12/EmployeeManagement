@@ -9,5 +9,7 @@ namespace Test.Services.Interface
         bool CheckExistsUsernameEmployee(string username);
         bool CheckExistsEmailEmployee(string email);
         bool CheckExistsPhoneNumberEmployee(string phoneNumber);
+        bool CheckExistPhoneNumberWhenUpdate(int id, string phoneNumber);
+        bool CheckExistEmailWhenUpdate(int id, string email);
     }
 }

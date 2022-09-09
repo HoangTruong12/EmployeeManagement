@@ -216,7 +216,7 @@ namespace Web.Controllers
 
         // POST: EmployeeController/Edit/5
         [HttpPost]
-        public async Task<IActionResult> Edit(int? id, Employee employee)
+        public async Task<IActionResult> Edit(int? id, EmployeeUpdateRequest request)
         {
             try
             {
@@ -224,7 +224,7 @@ namespace Web.Controllers
                 {
                     if (ModelState.IsValid)
                     {
-                        if (id != employee.Id)
+                        if (id != request.Id)
                         {
                             return NotFound();
                         }
@@ -235,9 +235,17 @@ namespace Web.Controllers
                               new AuthenticationHeaderValue("Bearer", _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString());
 
                         var url = "api/Employee/update/" + id;
-                        var stringContent = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+                        var stringContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
                         HttpResponseMessage response = await client.PutAsync(url, stringContent);
+
+                        var message = response.Content.ReadAsStringAsync().Result;
+
+                        if (message == "Phone number already exist")
+                            TempData["FailMessage"] = "Phone number already exist - Update Fail";
+
+                        if (message == "Email already exist")
+                            TempData["FailMessage"] = "Email already exist - Update Fail";
 
                         if (response.IsSuccessStatusCode)
                         {
@@ -248,7 +256,7 @@ namespace Web.Controllers
                     }
 
                     //return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Edit", employee)});
-                    return View(employee);
+                    return View(request);
                 }
             }
             catch (Exception ex)

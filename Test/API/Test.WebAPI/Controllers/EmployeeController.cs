@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Test.Modal.Dto;
 using Test.Modal.Entities;
 using Test.Services.Interface;
 
@@ -81,14 +83,25 @@ namespace Test.WebAPI.Controllers
         }
 
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> Update(int id, Employee employee)
+        public async Task<IActionResult> Update(int id, EmployeeUpdateRequest request)
         {
-            var item = await _empService.GetEmployee(id);
+            var checkPhoneNumber = _checkExistsService.CheckExistPhoneNumberWhenUpdate(id, request.PhoneNumber);
+            if (checkPhoneNumber)
+            {
+                return BadRequest("Phone number already exist");
+            }
 
+            var checkEmail = _checkExistsService.CheckExistEmailWhenUpdate(id, request.Email);
+            if (checkEmail)
+            {
+                return BadRequest("Email already exist");
+            }
+
+            var item = await _empService.GetEmployee(id);
             if (item != null)
             {
-                await _empService.Update(id, employee);
-                return Ok(item);
+                await _empService.Update(id, request);
+                return Ok(request);
             }
 
             return NotFound($"Employee with Id: {id} was not found");
