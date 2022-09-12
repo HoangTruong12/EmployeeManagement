@@ -247,6 +247,11 @@ namespace Web.Controllers
                         if (message == "Email already exist")
                             TempData["FailMessage"] = "Email already exist - Update Fail";
 
+                        if(message == "DepartmentId was not found")
+                        {
+                            TempData["FailMessage"] = "DepartmentId was not found - Please choose again";
+                        }
+
                         if (response.IsSuccessStatusCode)
                         {
                             TempData["SuccessMessage"] = "Updated Successfully";
@@ -256,7 +261,7 @@ namespace Web.Controllers
                     }
 
                     //return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "Edit", employee)});
-                    return View(request);
+                    return RedirectToAction("Edit", "Employee");
                 }
             }
             catch (Exception ex)

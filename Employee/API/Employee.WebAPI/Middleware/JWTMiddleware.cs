@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Employee.Modal.Dto;
+using Employee.Services.Interface;
+using Employee.Data.Repository;
+using Employee.Modal.Entities;
 
 namespace Employee.WebAPI.Middleware
 {
@@ -37,7 +40,7 @@ namespace Employee.WebAPI.Middleware
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
-                
+
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
@@ -53,12 +56,14 @@ namespace Employee.WebAPI.Middleware
                 var sub = jwtToken.Claims.First(x => x.Type == "sub").Value;
                 //var pass = jwtToken.Claims.First(x => x.Type == "nameid").Value;
 
-                // check username trong token co ton tai trong db hay khong?
-                // ... code
-                //
+               
 
                 if (sub != null)
                 {
+                    // check username trong token co ton tai trong db hay khong?
+
+
+                    //
                     //context.Items["User"] =
                     //    new LoginDto { Username = sub, Password = pass};
 

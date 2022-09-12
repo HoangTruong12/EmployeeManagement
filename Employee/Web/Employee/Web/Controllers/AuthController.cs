@@ -47,7 +47,7 @@ namespace Web.Controllers
 
                     if (result == "Invalid Credentials")
                     {
-                        TempData["Message"] = "Incorrect username or password";
+                        TempData["ErrorMessage"] = "Incorrect username or password";
                         return Redirect("~/Auth/Index");
                     }
 

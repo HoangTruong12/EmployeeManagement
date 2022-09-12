@@ -85,6 +85,13 @@ namespace Employee.WebAPI.Controllers
         [HttpPut("update/{id}")]
         public async Task<IActionResult> Update(int id, EmployeeUpdateRequest request)
         {
+
+            var item = await _empService.GetEmployee(id); 
+            if(item == null)
+            {
+                return NotFound($"Employee with Id: {id} was not found");
+            }
+
             var checkPhoneNumber = _checkExistsService.CheckExistPhoneNumberWhenUpdate(id, request.PhoneNumber);
             if (checkPhoneNumber)
             {
@@ -97,7 +104,12 @@ namespace Employee.WebAPI.Controllers
                 return BadRequest("Email already exist");
             }
 
-            var item = await _empService.GetEmployee(id);
+            var checkDepartmentId = _checkExistsService.CheckDepartmentWhenUpdate(request.DepartmentId);
+            if (checkDepartmentId)
+            {
+                return BadRequest("DepartmentId was not found");
+            }
+
             if (item != null)
             {
                 await _empService.Update(id, request);

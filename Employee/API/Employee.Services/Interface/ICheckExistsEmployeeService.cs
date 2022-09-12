@@ -11,5 +11,6 @@ namespace Employee.Services.Interface
         bool CheckExistsPhoneNumberEmployee(string phoneNumber);
         bool CheckExistPhoneNumberWhenUpdate(int id, string phoneNumber);
         bool CheckExistEmailWhenUpdate(int id, string email);
+        bool CheckDepartmentWhenUpdate(int id);
     }
 }

@@ -12,10 +12,16 @@ namespace Employee.Services.Implement
     public class CheckExistsEmployeeService : BaseService, ICheckExistsEmployeeService
     {
         private readonly IRepository<EmployeeEntity> _empRepo;
+        private readonly IRepository<Department> _depRepo;
 
-        public CheckExistsEmployeeService(IUnitOfWork unitOfWork, IRepository<EmployeeEntity> empRepo) : base(unitOfWork)
+        public CheckExistsEmployeeService(
+            IUnitOfWork unitOfWork,
+            IRepository<EmployeeEntity> empRepo,
+            IRepository<Department> depRepo
+            ) : base(unitOfWork)
         {
             _empRepo = empRepo;
+            _depRepo = depRepo;
         }
         public bool CheckExistsEmailEmployee(string email)
         {
@@ -73,13 +79,13 @@ namespace Employee.Services.Implement
             {
                 bool result = false;
                 var checkPhone = _empRepo.GetAll().FirstOrDefault(x => x.PhoneNumber == phoneNumber);
-                if(checkPhone == null)
+                if (checkPhone == null)
                 {
                     return result;
                 }
-                return result = checkPhone.Id == id ? false : true;          
+                return result = checkPhone.Id == id ? false : true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -98,6 +104,23 @@ namespace Employee.Services.Implement
                 return rs = checkEmail.Id == id ? false : true;
             }
             catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool CheckDepartmentWhenUpdate(int id)
+        {
+            try
+            {
+                var checkDepartment = _depRepo.GetAll().FirstOrDefault(x => x.Id == id);
+                if(checkDepartment != null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch(Exception ex)
             {
                 throw ex;
             }
