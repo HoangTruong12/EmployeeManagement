@@ -1,0 +1,15 @@
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\obj\Debug\netstandard2.1\Employee.Services.csproj.AssemblyReference.cache
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\obj\Debug\netstandard2.1\Employee.Services.GeneratedMSBuildEditorConfig.editorconfig
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\obj\Debug\netstandard2.1\Employee.Services.AssemblyInfoInputs.cache
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\obj\Debug\netstandard2.1\Employee.Services.AssemblyInfo.cs
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\obj\Debug\netstandard2.1\Employee.Services.csproj.CoreCompileInputs.cache
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\obj\Debug\netstandard2.1\Employee.Services.dll
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\obj\Debug\netstandard2.1\Employee.Services.pdb
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\bin\Debug\netstandard2.1\Employee.Services.deps.json
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\bin\Debug\netstandard2.1\Employee.Services.dll
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\bin\Debug\netstandard2.1\Employee.Services.pdb
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\bin\Debug\netstandard2.1\Employee.Data.dll
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\bin\Debug\netstandard2.1\Employee.Modal.dll
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\bin\Debug\netstandard2.1\Employee.Data.pdb
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\bin\Debug\netstandard2.1\Employee.Modal.pdb
+E:\Workspace-E\Source code\EmployeeManagementProject\Employee\API\Employee.Services\obj\Debug\netstandard2.1\Employee.Services.csproj.CopyComplete

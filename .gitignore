@@ -2,11 +2,11 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Test/API/Test.Data/bin/Release/netstandard2.1
-/Test/API/Test.Modal/obj/Release/netstandard2.1
-/Test/API/Test.Services/bin/Release/netstandard2.1
-/Test/API/Test.Services/obj/Release/netstandard2.1
-/Test/API/Test.WebAPI/obj/Release/netcoreapp3.1
-/Test/Web/Test/Web/obj/Release/netcoreapp3.1
-/Test/Web/Test/Web/bin/Release/netcoreapp3.1
-/Test/API/Test.WebAPI/bin/Release/netcoreapp3.1
+/Employee/API/Employee.Data/bin/Release/netstandard2.1
+/Employee/API/Employee.Modal/obj/Release/netstandard2.1
+/Employee/API/Employee.Services/bin/Release/netstandard2.1
+/Employee/API/Employee.Services/obj/Release/netstandard2.1
+/Employee/API/Employee.WebAPI/obj/Release/netcoreapp3.1
+/Employee/Web/Employee/Web/obj/Release/netcoreapp3.1
+/Employee/Web/Employee/Web/bin/Release/netcoreapp3.1
+/Employee/API/Employee.WebAPI/bin/Release/netcoreapp3.1

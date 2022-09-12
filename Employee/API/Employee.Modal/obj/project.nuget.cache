@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ibxwtlIwElaW2ioE4id2+A91fB9xlhZewM7A36XsCAA/8m3Vxkmb5NKPtbsQ7XE/zmO4FAbwIKEXt0MgxlvnDQ==",
+  "success": true,
+  "projectFilePath": "E:\\Workspace-E\\Source code\\EmployeeManagementProject\\Employee\\API\\Employee.Modal\\Employee.Modal.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\truonghv2\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
